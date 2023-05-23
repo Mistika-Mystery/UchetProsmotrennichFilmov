@@ -1,20 +1,19 @@
-﻿<Window x:Class="UchetProsmotrennichFilmov.MainWindow"
+﻿<Window x:Name="Учет_просмотренных_фильмов" x:Class="UchetProsmotrennichFilmov.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov"
         mc:Ignorable="d"
-        Title="Учет Просмотренных Фильмов" Height="450" Width="800">
+        Title="Учет Просмотренных Фильмов" Height="450" Width="800" Icon="/Image/video_icon.png" WindowStyle="ThreeDBorderWindow">
     <Window.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
     </Window.Resources>
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF252525" Offset="1"/>
-                <GradientStop Color="White"/>
-                <GradientStop Color="#FF969696" Offset="0.231"/>
+                <GradientStop Color="#FF276E8B" Offset="0.998"/>
+                <GradientStop Color="#FFB9EAFF" Offset="0"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
@@ -27,7 +26,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Source="/Image/logotip.png"/>
+        <Label Grid.Column="1" Content="Учет Просмотренных Фильмов" HorizontalAlignment="Left" Margin="263,0,0,0" VerticalAlignment="Center"/>
 
     </Grid>
 </Window>
