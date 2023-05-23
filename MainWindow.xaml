@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Учет Просмотренных Фильмов" Height="450" Width="800">
+    <Window.Resources>
+        <Color x:Key="GradientStopColor1">White</Color>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF252525" Offset="1"/>
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FF969696" Offset="0.231"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
     </Grid>
 </Window>
