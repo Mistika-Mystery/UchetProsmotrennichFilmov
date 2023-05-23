@@ -103,5 +103,9 @@
   <ItemGroup>
     <Resource Include="Image\arrow-back.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BD\" />
+    <Folder Include="Pages\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
