@@ -100,5 +100,8 @@
   <ItemGroup>
     <Resource Include="Image\logotip.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\arrow-back.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
