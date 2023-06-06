@@ -15,9 +15,17 @@ namespace UchetProsmotrennichFilmov.BD
     
     public partial class UchetFilmofEntities : DbContext
     {
+        private static UchetFilmofEntities _context;
         public UchetFilmofEntities()
             : base("name=UchetFilmofEntities")
         {
+        }
+        private static UchetFilmofEntities GetContext()
+        {
+            if (_context == null)
+                _context = new UchetFilmofEntities();
+
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
