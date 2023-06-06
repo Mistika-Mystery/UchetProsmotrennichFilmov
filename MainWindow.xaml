@@ -31,6 +31,18 @@
         <Label Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Margin="20,55,0,0" FontFamily="Gill Sans Nova"/>
         <Image Grid.Column="1" Grid.ColumnSpan="1" Source="/Image/arrow-back.png" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Margin="0,0,10,0" ToolTip="Назад"/>
         <Frame x:Name="MyFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
-
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <Label Content="Добро Пожаловать!" FontSize="24" FontWeight="Bold"></Label>
+            <Label Content="Авторизируйтесь:" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Логин: "></TextBlock>
+                <TextBox Width="212"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Пароль: "></TextBlock>
+                <TextBox Width="204"></TextBox>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
