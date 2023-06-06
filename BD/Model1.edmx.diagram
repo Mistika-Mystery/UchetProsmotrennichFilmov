@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a03846bd47d8496982a5b8cacd9fef32" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="UchetFilmofModel.Actors" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Films" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Janr" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Prosmotreno" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Rezhisers" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Rol" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Strany" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Tip" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Users" Width="1.5" PointX="10.5" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Actors_Strany" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Films_Rezhisers" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Films_Strany" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Films_Tip" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Films_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_UserFilm_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_UserFilm_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Rezhisers_Strany" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.FK_Users_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.ActorFilm" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.Faforit" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.HochuPosmotret" ManuallyRouted="false" />
+        <AssociationConnector Association="UchetFilmofModel.JanrFilms" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

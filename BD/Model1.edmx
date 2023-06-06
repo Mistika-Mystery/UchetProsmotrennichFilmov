@@ -1,0 +1,940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище UchetFilmofModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActorFilm">
+          <Key>
+            <PropertyRef Name="FilmId" />
+            <PropertyRef Name="ActorId" />
+          </Key>
+          <Property Name="FilmId" Type="int" Nullable="false" />
+          <Property Name="ActorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Actors">
+          <Key>
+            <PropertyRef Name="IdActors" />
+          </Key>
+          <Property Name="IdActors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageActor" Type="nvarchar" MaxLength="50" />
+          <Property Name="DR" Type="date" Nullable="false" />
+          <Property Name="StranaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faforit">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FilmId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FilmId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Films">
+          <Key>
+            <PropertyRef Name="IdFilm" />
+          </Key>
+          <Property Name="IdFilm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdStrana" Type="int" Nullable="false" />
+          <Property Name="NameFilm" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TimeFilm" Type="int" Nullable="false" />
+          <Property Name="GodFilma" Type="int" Nullable="false" />
+          <Property Name="IdRezhiser" Type="int" Nullable="false" />
+          <Property Name="ImageFilm" Type="nvarchar(max)" />
+          <Property Name="TimeDobavlenia" Type="date" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" />
+          <Property Name="IdTip" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+        </EntityType>
+        <EntityType Name="HochuPosmotret">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FilmId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FilmId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Janr">
+          <Key>
+            <PropertyRef Name="IdJanr" />
+          </Key>
+          <Property Name="IdJanr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameJanr" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JanrFilms">
+          <Key>
+            <PropertyRef Name="FilmId" />
+            <PropertyRef Name="JanrId" />
+          </Key>
+          <Property Name="FilmId" Type="int" Nullable="false" />
+          <Property Name="JanrId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prosmotreno">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FilmId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FilmId" Type="int" Nullable="false" />
+          <Property Name="TimeDobazlenia" Type="date" Nullable="false" />
+          <Property Name="Reiting" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezhisers">
+          <Key>
+            <PropertyRef Name="IdRezhiser" />
+          </Key>
+          <Property Name="IdRezhiser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageRezhiser" Type="nvarchar(max)" />
+          <Property Name="DR" Type="date" Nullable="false" />
+          <Property Name="StranaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Strany">
+          <Key>
+            <PropertyRef Name="IdStrana" />
+          </Key>
+          <Property Name="IdStrana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStrana" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="TipId" />
+          </Key>
+          <Property Name="TipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTip" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TimeDobavlenia" Type="date" Nullable="false" />
+          <Property Name="DR" Type="date" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActorFilm_Actors">
+          <End Role="Actors" Type="Self.Actors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActorFilm" Type="Self.ActorFilm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actors">
+              <PropertyRef Name="IdActors" />
+            </Principal>
+            <Dependent Role="ActorFilm">
+              <PropertyRef Name="ActorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActorFilm_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActorFilm" Type="Self.ActorFilm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="ActorFilm">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actors_Strany">
+          <End Role="Strany" Type="Self.Strany" Multiplicity="1" />
+          <End Role="Actors" Type="Self.Actors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strany">
+              <PropertyRef Name="IdStrana" />
+            </Principal>
+            <Dependent Role="Actors">
+              <PropertyRef Name="StranaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faforit_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1" />
+          <End Role="Faforit" Type="Self.Faforit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="Faforit">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faforit_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Faforit" Type="Self.Faforit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Faforit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Rezhisers">
+          <End Role="Rezhisers" Type="Self.Rezhisers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezhisers">
+              <PropertyRef Name="IdRezhiser" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdRezhiser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Strany">
+          <End Role="Strany" Type="Self.Strany" Multiplicity="1" />
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strany">
+              <PropertyRef Name="IdStrana" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdStrana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Tip">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="TipId" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdTip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HochuPosmotret_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HochuPosmotret" Type="Self.HochuPosmotret" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="HochuPosmotret">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HochuPosmotret_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HochuPosmotret" Type="Self.HochuPosmotret" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="HochuPosmotret">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JanrFilms_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JanrFilms" Type="Self.JanrFilms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="JanrFilms">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JanrFilms_Janr">
+          <End Role="Janr" Type="Self.Janr" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JanrFilms" Type="Self.JanrFilms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Janr">
+              <PropertyRef Name="IdJanr" />
+            </Principal>
+            <Dependent Role="JanrFilms">
+              <PropertyRef Name="JanrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezhisers_Strany">
+          <End Role="Strany" Type="Self.Strany" Multiplicity="1" />
+          <End Role="Rezhisers" Type="Self.Rezhisers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strany">
+              <PropertyRef Name="IdStrana" />
+            </Principal>
+            <Dependent Role="Rezhisers">
+              <PropertyRef Name="StranaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFilm_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prosmotreno" Type="Self.Prosmotreno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="Prosmotreno">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFilm_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prosmotreno" Type="Self.Prosmotreno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Prosmotreno">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UchetFilmofModelContainer">
+          <EntitySet Name="ActorFilm" EntityType="Self.ActorFilm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Actors" EntityType="Self.Actors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faforit" EntityType="Self.Faforit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Films" EntityType="Self.Films" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HochuPosmotret" EntityType="Self.HochuPosmotret" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Janr" EntityType="Self.Janr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JanrFilms" EntityType="Self.JanrFilms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prosmotreno" EntityType="Self.Prosmotreno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezhisers" EntityType="Self.Rezhisers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Strany" EntityType="Self.Strany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActorFilm_Actors" Association="Self.FK_ActorFilm_Actors">
+            <End Role="Actors" EntitySet="Actors" />
+            <End Role="ActorFilm" EntitySet="ActorFilm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActorFilm_Films" Association="Self.FK_ActorFilm_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="ActorFilm" EntitySet="ActorFilm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actors_Strany" Association="Self.FK_Actors_Strany">
+            <End Role="Strany" EntitySet="Strany" />
+            <End Role="Actors" EntitySet="Actors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faforit_Films" Association="Self.FK_Faforit_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Faforit" EntitySet="Faforit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faforit_Users" Association="Self.FK_Faforit_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Faforit" EntitySet="Faforit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Rezhisers" Association="Self.FK_Films_Rezhisers">
+            <End Role="Rezhisers" EntitySet="Rezhisers" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Strany" Association="Self.FK_Films_Strany">
+            <End Role="Strany" EntitySet="Strany" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Tip" Association="Self.FK_Films_Tip">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Users" Association="Self.FK_Films_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HochuPosmotret_Films" Association="Self.FK_HochuPosmotret_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="HochuPosmotret" EntitySet="HochuPosmotret" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HochuPosmotret_Users" Association="Self.FK_HochuPosmotret_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="HochuPosmotret" EntitySet="HochuPosmotret" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JanrFilms_Films" Association="Self.FK_JanrFilms_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="JanrFilms" EntitySet="JanrFilms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JanrFilms_Janr" Association="Self.FK_JanrFilms_Janr">
+            <End Role="Janr" EntitySet="Janr" />
+            <End Role="JanrFilms" EntitySet="JanrFilms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezhisers_Strany" Association="Self.FK_Rezhisers_Strany">
+            <End Role="Strany" EntitySet="Strany" />
+            <End Role="Rezhisers" EntitySet="Rezhisers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFilm_Films" Association="Self.FK_UserFilm_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Prosmotreno" EntitySet="Prosmotreno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFilm_Users" Association="Self.FK_UserFilm_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Prosmotreno" EntitySet="Prosmotreno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Rol" Association="Self.FK_Users_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UchetFilmofModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actors">
+          <Key>
+            <PropertyRef Name="IdActors" />
+          </Key>
+          <Property Name="IdActors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageActor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StranaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Strany" Relationship="Self.FK_Actors_Strany" FromRole="Actors" ToRole="Strany" />
+          <NavigationProperty Name="Films" Relationship="Self.ActorFilm" FromRole="Actors" ToRole="Films" />
+        </EntityType>
+        <EntityType Name="Films">
+          <Key>
+            <PropertyRef Name="IdFilm" />
+          </Key>
+          <Property Name="IdFilm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdStrana" Type="Int32" Nullable="false" />
+          <Property Name="NameFilm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeFilm" Type="Int32" Nullable="false" />
+          <Property Name="GodFilma" Type="Int32" Nullable="false" />
+          <Property Name="IdRezhiser" Type="Int32" Nullable="false" />
+          <Property Name="ImageFilm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeDobavlenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTip" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="Rezhisers" Relationship="Self.FK_Films_Rezhisers" FromRole="Films" ToRole="Rezhisers" />
+          <NavigationProperty Name="Strany" Relationship="Self.FK_Films_Strany" FromRole="Films" ToRole="Strany" />
+          <NavigationProperty Name="Tip" Relationship="Self.FK_Films_Tip" FromRole="Films" ToRole="Tip" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Films_Users" FromRole="Films" ToRole="Users" />
+          <NavigationProperty Name="Prosmotreno" Relationship="Self.FK_UserFilm_Films" FromRole="Films" ToRole="Prosmotreno" />
+          <NavigationProperty Name="Actors" Relationship="Self.ActorFilm" FromRole="Films" ToRole="Actors" />
+          <NavigationProperty Name="Users1" Relationship="Self.Faforit" FromRole="Films" ToRole="Users" />
+          <NavigationProperty Name="Users2" Relationship="Self.HochuPosmotret" FromRole="Films" ToRole="Users" />
+          <NavigationProperty Name="Janr" Relationship="Self.JanrFilms" FromRole="Films" ToRole="Janr" />
+        </EntityType>
+        <EntityType Name="Janr">
+          <Key>
+            <PropertyRef Name="IdJanr" />
+          </Key>
+          <Property Name="IdJanr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameJanr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Films" Relationship="Self.JanrFilms" FromRole="Janr" ToRole="Films" />
+        </EntityType>
+        <EntityType Name="Prosmotreno">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FilmId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FilmId" Type="Int32" Nullable="false" />
+          <Property Name="TimeDobazlenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Reiting" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_UserFilm_Films" FromRole="Prosmotreno" ToRole="Films" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserFilm_Users" FromRole="Prosmotreno" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Rezhisers">
+          <Key>
+            <PropertyRef Name="IdRezhiser" />
+          </Key>
+          <Property Name="IdRezhiser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageRezhiser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StranaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Films_Rezhisers" FromRole="Rezhisers" ToRole="Films" />
+          <NavigationProperty Name="Strany" Relationship="Self.FK_Rezhisers_Strany" FromRole="Rezhisers" ToRole="Strany" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Rol" FromRole="Rol" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Strany">
+          <Key>
+            <PropertyRef Name="IdStrana" />
+          </Key>
+          <Property Name="IdStrana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStrana" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Actors" Relationship="Self.FK_Actors_Strany" FromRole="Strany" ToRole="Actors" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Films_Strany" FromRole="Strany" ToRole="Films" />
+          <NavigationProperty Name="Rezhisers" Relationship="Self.FK_Rezhisers_Strany" FromRole="Strany" ToRole="Rezhisers" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="TipId" />
+          </Key>
+          <Property Name="TipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Films_Tip" FromRole="Tip" ToRole="Films" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeDobavlenia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Films_Users" FromRole="Users" ToRole="Films" />
+          <NavigationProperty Name="Prosmotreno" Relationship="Self.FK_UserFilm_Users" FromRole="Users" ToRole="Prosmotreno" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_Users_Rol" FromRole="Users" ToRole="Rol" />
+          <NavigationProperty Name="Films1" Relationship="Self.Faforit" FromRole="Users" ToRole="Films" />
+          <NavigationProperty Name="Films2" Relationship="Self.HochuPosmotret" FromRole="Users" ToRole="Films" />
+        </EntityType>
+        <Association Name="FK_Actors_Strany">
+          <End Role="Strany" Type="Self.Strany" Multiplicity="1" />
+          <End Role="Actors" Type="Self.Actors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strany">
+              <PropertyRef Name="IdStrana" />
+            </Principal>
+            <Dependent Role="Actors">
+              <PropertyRef Name="StranaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Rezhisers">
+          <End Role="Rezhisers" Type="Self.Rezhisers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezhisers">
+              <PropertyRef Name="IdRezhiser" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdRezhiser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Strany">
+          <End Role="Strany" Type="Self.Strany" Multiplicity="1" />
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strany">
+              <PropertyRef Name="IdStrana" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdStrana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Tip">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="TipId" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdTip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Films_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Films">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFilm_Films">
+          <End Role="Films" Type="Self.Films" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prosmotreno" Type="Self.Prosmotreno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Films">
+              <PropertyRef Name="IdFilm" />
+            </Principal>
+            <Dependent Role="Prosmotreno">
+              <PropertyRef Name="FilmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFilm_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Prosmotreno" Type="Self.Prosmotreno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Prosmotreno">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezhisers_Strany">
+          <End Role="Strany" Type="Self.Strany" Multiplicity="1" />
+          <End Role="Rezhisers" Type="Self.Rezhisers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strany">
+              <PropertyRef Name="IdStrana" />
+            </Principal>
+            <Dependent Role="Rezhisers">
+              <PropertyRef Name="StranaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActorFilm">
+          <End Role="Actors" Type="Self.Actors" Multiplicity="*" />
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+        </Association>
+        <Association Name="Faforit">
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="HochuPosmotret">
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="JanrFilms">
+          <End Role="Films" Type="Self.Films" Multiplicity="*" />
+          <End Role="Janr" Type="Self.Janr" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="UchetFilmofEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actors" EntityType="Self.Actors" />
+          <EntitySet Name="Films" EntityType="Self.Films" />
+          <EntitySet Name="Janr" EntityType="Self.Janr" />
+          <EntitySet Name="Prosmotreno" EntityType="Self.Prosmotreno" />
+          <EntitySet Name="Rezhisers" EntityType="Self.Rezhisers" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="Strany" EntityType="Self.Strany" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Actors_Strany" Association="Self.FK_Actors_Strany">
+            <End Role="Strany" EntitySet="Strany" />
+            <End Role="Actors" EntitySet="Actors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Rezhisers" Association="Self.FK_Films_Rezhisers">
+            <End Role="Rezhisers" EntitySet="Rezhisers" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Strany" Association="Self.FK_Films_Strany">
+            <End Role="Strany" EntitySet="Strany" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Tip" Association="Self.FK_Films_Tip">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Films_Users" Association="Self.FK_Films_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFilm_Films" Association="Self.FK_UserFilm_Films">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Prosmotreno" EntitySet="Prosmotreno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFilm_Users" Association="Self.FK_UserFilm_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Prosmotreno" EntitySet="Prosmotreno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezhisers_Strany" Association="Self.FK_Rezhisers_Strany">
+            <End Role="Strany" EntitySet="Strany" />
+            <End Role="Rezhisers" EntitySet="Rezhisers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Rol" Association="Self.FK_Users_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ActorFilm" Association="Self.ActorFilm">
+            <End Role="Actors" EntitySet="Actors" />
+            <End Role="Films" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="Faforit" Association="Self.Faforit">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="HochuPosmotret" Association="Self.HochuPosmotret">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="JanrFilms" Association="Self.JanrFilms">
+            <End Role="Films" EntitySet="Films" />
+            <End Role="Janr" EntitySet="Janr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UchetFilmofModelContainer" CdmEntityContainer="UchetFilmofEntities">
+          <EntitySetMapping Name="Actors">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Actors">
+              <MappingFragment StoreEntitySet="Actors">
+                <ScalarProperty Name="IdActors" ColumnName="IdActors" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="ImageActor" ColumnName="ImageActor" />
+                <ScalarProperty Name="DR" ColumnName="DR" />
+                <ScalarProperty Name="StranaId" ColumnName="StranaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Films">
+              <MappingFragment StoreEntitySet="Films">
+                <ScalarProperty Name="IdFilm" ColumnName="IdFilm" />
+                <ScalarProperty Name="IdStrana" ColumnName="IdStrana" />
+                <ScalarProperty Name="NameFilm" ColumnName="NameFilm" />
+                <ScalarProperty Name="TimeFilm" ColumnName="TimeFilm" />
+                <ScalarProperty Name="GodFilma" ColumnName="GodFilma" />
+                <ScalarProperty Name="IdRezhiser" ColumnName="IdRezhiser" />
+                <ScalarProperty Name="ImageFilm" ColumnName="ImageFilm" />
+                <ScalarProperty Name="TimeDobavlenia" ColumnName="TimeDobavlenia" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="IdTip" ColumnName="IdTip" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Janr">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Janr">
+              <MappingFragment StoreEntitySet="Janr">
+                <ScalarProperty Name="IdJanr" ColumnName="IdJanr" />
+                <ScalarProperty Name="NameJanr" ColumnName="NameJanr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prosmotreno">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Prosmotreno">
+              <MappingFragment StoreEntitySet="Prosmotreno">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FilmId" ColumnName="FilmId" />
+                <ScalarProperty Name="TimeDobazlenia" ColumnName="TimeDobazlenia" />
+                <ScalarProperty Name="Reiting" ColumnName="Reiting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezhisers">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Rezhisers">
+              <MappingFragment StoreEntitySet="Rezhisers">
+                <ScalarProperty Name="IdRezhiser" ColumnName="IdRezhiser" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="ImageRezhiser" ColumnName="ImageRezhiser" />
+                <ScalarProperty Name="DR" ColumnName="DR" />
+                <ScalarProperty Name="StranaId" ColumnName="StranaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Strany">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Strany">
+              <MappingFragment StoreEntitySet="Strany">
+                <ScalarProperty Name="IdStrana" ColumnName="IdStrana" />
+                <ScalarProperty Name="NameStrana" ColumnName="NameStrana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UchetFilmofModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Tip">
+              <MappingFragment StoreEntitySet="Tip">
+                <ScalarProperty Name="TipId" ColumnName="TipId" />
+                <ScalarProperty Name="NameTip" ColumnName="NameTip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UchetFilmofModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Pass2" ColumnName="Pass2" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TimeDobavlenia" ColumnName="TimeDobavlenia" />
+                <ScalarProperty Name="DR" ColumnName="DR" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ActorFilm" TypeName="UchetFilmofModel.ActorFilm" StoreEntitySet="ActorFilm">
+            <EndProperty Name="Actors">
+              <ScalarProperty Name="IdActors" ColumnName="ActorId" />
+            </EndProperty>
+            <EndProperty Name="Films">
+              <ScalarProperty Name="IdFilm" ColumnName="FilmId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Faforit" TypeName="UchetFilmofModel.Faforit" StoreEntitySet="Faforit">
+            <EndProperty Name="Films">
+              <ScalarProperty Name="IdFilm" ColumnName="FilmId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IdUser" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="HochuPosmotret" TypeName="UchetFilmofModel.HochuPosmotret" StoreEntitySet="HochuPosmotret">
+            <EndProperty Name="Films">
+              <ScalarProperty Name="IdFilm" ColumnName="FilmId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IdUser" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="JanrFilms" TypeName="UchetFilmofModel.JanrFilms" StoreEntitySet="JanrFilms">
+            <EndProperty Name="Films">
+              <ScalarProperty Name="IdFilm" ColumnName="FilmId" />
+            </EndProperty>
+            <EndProperty Name="Janr">
+              <ScalarProperty Name="IdJanr" ColumnName="JanrId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
