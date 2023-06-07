@@ -26,6 +26,8 @@ namespace UchetProsmotrennichFilmov
         {
             InitializeComponent();
             MyFrame.Navigate(new Pages.Avtorizac());
+
+            
         }
         // кнопка назад, скрытая при невозможности - сейчас не нужна
         //private void BtnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

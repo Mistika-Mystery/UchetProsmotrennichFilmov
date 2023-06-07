@@ -44,19 +44,16 @@ namespace UchetProsmotrennichFilmov.Pages
             }
 
             var Log = BD.AppDB.db.Users.FirstOrDefault(x => x.Login == TBLogo.Text && x.Pass == PBPass.Password.ToString());
-            var isRoot = BD.AppDB.db.Users.FirstOrDefault(x => x.RolId == 1);
-            if (Log != null && isRoot == Log)
+            
+            if (Log != null)
             {
                 AppDB.CurrentUser = Log;
                 MessageBox.Show("Рады видеть Вас, " + AppDB.CurrentUser.Login + "!");
-                NavigationService.Navigate(new Pages.Katalog());
+                Glavnaya glavnaya = new Glavnaya();
+                glavnaya.Show();
+                Window.GetWindow(this).Close();
             }
-            else if (Log != null)
-                {
-                AppDB.CurrentUser = Log;
-                    MessageBox.Show("Рады видеть Вас, " + AppDB.CurrentUser.Login + "!");
-                    NavigationService.Navigate(new Pages.Katalog());
-                }
+                
             else
             {
                 MessageBox.Show("Такого пользователя \n      не существует\nПопробуйте еще раз\n           ИЛИ\nЗарегестрируйтесь");

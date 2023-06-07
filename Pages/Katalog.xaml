@@ -9,87 +9,10 @@
       Title="Katalog">
 
     <Grid>
-        
-        
-        <TabControl>
-            <TabItem Header=" Каталог ">
-                
-                <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="3*"/>
-                                            <!--<ColumnDefinition Width="*"/>-->
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Image  
-                                    Source="{Binding ImageFilm}" 
-                                    Grid.Column="0" 
-                                    Grid.Row="0" 
-                                    Grid.RowSpan="5"/>
-                                        <StackPanel 
-                                    Orientation="Horizontal" 
-                                    Grid.Row="0" 
-                                    Grid.Column="1">
-                                            <TextBlock Text="Имя: "/>
-                                            <TextBlock Text="{Binding NameFilm}" FontWeight="Bold"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Grid.Column="1" Content="Button" Grid.Row="1"/>
+        </StackPanel>
 
-                                        </StackPanel>
-                                        <StackPanel 
-                                    Orientation="Horizontal" 
-                                    Grid.Row="1" 
-                                    Grid.Column="1">
-                                            <TextBlock Text="Страна: "/>
-                                            <TextBlock Text="{Binding Strany.NameStrana}" FontWeight="Bold"/>
 
-                                        </StackPanel>
-                                        <StackPanel 
-                                    Orientation="Horizontal" 
-                                    Grid.Row="2" 
-                                    Grid.Column="1">
-                                            <TextBlock Text="год: "/>
-                                            <TextBlock Text="{Binding GodFilm }" FontWeight="Bold"/>
-
-                                        </StackPanel>
-                                        <StackPanel 
-                                    Orientation="Horizontal" 
-                                    Grid.Row="3" 
-                                    Grid.Column="1">
-                                            <TextBlock Text="Продолжительность: "/>
-                                            <TextBlock Text="{Binding TimeFilm}" FontWeight="Bold"/>
-                                            <TextBlock Text=" мин."/>
-                                        </StackPanel>
-                                        <StackPanel 
-                                    Orientation="Horizontal" 
-                                    Grid.Row="4" 
-                                    Grid.Column="1">
-                                            <TextBlock Text="Режиссер: "/>
-                                            <TextBlock Text="{Binding Rezhisers.FIO}" FontWeight="Bold"/>
-                                            
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-               
-            </TabItem>
-            <TabItem Header=" Избранное " />
-            <TabItem Header=" Просмотренные " />
-            <TabItem Header=" Хочу Посмотреть " />
-            <TabItem Header=" Режиссеры " />
-            <TabItem Header=" Актеры " />
-        </TabControl>
     </Grid>
 </Page>

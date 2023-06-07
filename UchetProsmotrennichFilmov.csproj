@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Glavnaya.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Katalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +142,9 @@
   <ItemGroup>
     <Compile Include="Pages\Avtorizac.xaml.cs">
       <DependentUpon>Avtorizac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Glavnaya.xaml.cs">
+      <DependentUpon>Glavnaya.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Katalog.xaml.cs">
       <DependentUpon>Katalog.xaml</DependentUpon>
@@ -199,6 +206,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\exit.png" />
+    <Resource Include="Image\fovard.png" />
     <Resource Include="Image\icons-842889_1280.png" />
     <Resource Include="Image\glav6.png" />
     <Resource Include="Image\glav7.png" />

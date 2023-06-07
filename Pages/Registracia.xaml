@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
         mc:Ignorable="d"
-        Title="Registracia" Height="440" Width="600" MinWidth="450" MinHeight="400" WindowStyle="None" HorizontalContentAlignment="Center">
+        Title="Регистрация" Height="440" Width="600" MinWidth="450" MinHeight="400" WindowStyle="None" HorizontalContentAlignment="Center" Icon="/Image/icons-842889_1280.png">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
