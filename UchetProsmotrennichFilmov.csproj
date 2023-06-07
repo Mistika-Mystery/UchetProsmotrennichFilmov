@@ -199,6 +199,14 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\icons-842889_1280.png" />
+    <Resource Include="Image\glav6.png" />
+    <Resource Include="Image\glav7.png" />
+    <Resource Include="Image\glav5.png" />
+    <Resource Include="Image\glav4.png" />
+    <Resource Include="Image\glav3.jpg" />
+    <Resource Include="Image\glav2.png" />
+    <Resource Include="Image\glav1.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
