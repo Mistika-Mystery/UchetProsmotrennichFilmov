@@ -8,10 +8,7 @@
         Title="Регистрация" Height="440" Width="600" MinWidth="450" MinHeight="400" WindowStyle="None" HorizontalContentAlignment="Center" Icon="/Image/icons-842889_1280.png">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF276E8B" Offset="0.998"/>
-                <GradientStop Color="#FFB9EAFF" Offset="0"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/Image/fon3.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

@@ -206,6 +206,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\fon3.jpg" />
+    <Resource Include="Image\fon1.jpg" />
+    <Resource Include="Image\fon.jpg" />
     <Resource Include="Image\exit.png" />
     <Resource Include="Image\fovard.png" />
     <Resource Include="Image\icons-842889_1280.png" />

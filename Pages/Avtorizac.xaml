@@ -10,7 +10,6 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <Image Source="/Image/glav6.png" Width="200" Margin="0,0,10,0"/>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
             <Label Content="Добро Пожаловать!" FontSize="30" ToolTip="Маша 111 \\\ Админ 111" FontFamily="Gill Sans Nova Ultra Bold"/>
             <Label Content="Авторизируйтесь:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontFamily="Gill Sans Nova"></Label>
@@ -26,7 +25,6 @@
             <TextBlock Text="Или" HorizontalAlignment="Center" FontSize="16" FontFamily="Gill Sans Nova"></TextBlock>
             <Button x:Name="BtnReg" Content="Зарегистрироваться" Click="BtnReg_Click" FontSize="16" FontFamily="Gill Sans Nova" Cursor="Hand" FontWeight="Bold"></Button>
         </StackPanel>
-            <Image Source="/Image/glav7.png" Width="200" Margin="10,0,0,0"/>
         </StackPanel>
 
     </Grid>
