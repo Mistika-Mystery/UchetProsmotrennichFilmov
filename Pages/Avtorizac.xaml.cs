@@ -68,6 +68,7 @@ namespace UchetProsmotrennichFilmov.Pages
             Registracia registracia= new Registracia();
             registracia.Show();
             
+            
         }
     }
 }

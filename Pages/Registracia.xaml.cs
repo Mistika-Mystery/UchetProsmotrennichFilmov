@@ -33,7 +33,11 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show($"Вы уверены, что хотите вернуться?\nНесохраненные данные могут быть утеряны",
+                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void BtnRegistr_Click(object sender, RoutedEventArgs e)
