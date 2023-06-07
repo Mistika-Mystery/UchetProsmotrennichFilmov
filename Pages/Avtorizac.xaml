@@ -11,19 +11,19 @@
     <Grid>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
-            <Label Content="Добро Пожаловать!" FontSize="24" FontWeight="Bold" ToolTip="Маша 111 \\\ Админ 111"></Label>
-            <Label Content="Авторизируйтесь:" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <Label Content="Добро Пожаловать!" FontSize="30" ToolTip="Маша 111 \\\ Админ 111" FontFamily="Gill Sans Nova Ultra Bold"/>
+            <Label Content="Авторизируйтесь:" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontFamily="Gill Sans Nova"></Label>
             <StackPanel>
-                <TextBlock Text="Введите ваш логин: "></TextBlock>
-                <TextBox x:Name="TBLogo"></TextBox>
+                <TextBlock Text="Введите ваш логин: " FontSize="16" FontFamily="Gill Sans Nova"></TextBlock>
+                <TextBox x:Name="TBLogo" FontSize="16"></TextBox>
             </StackPanel>
             <StackPanel Margin="0,0,0,5">
-                <TextBlock Text="Введите ваш пароль: "></TextBlock>
-                <PasswordBox x:Name="PBPass"></PasswordBox>
+                <TextBlock Text="Введите ваш пароль: " FontSize="16" FontFamily="Gill Sans Nova"></TextBlock>
+                <PasswordBox x:Name="PBPass" FontSize="16"></PasswordBox>
             </StackPanel>
-            <Button x:Name="BtnVhod" Content="Войти" Click="BtnVhod_Click"></Button>
-            <TextBlock Text="Или" HorizontalAlignment="Center"></TextBlock>
-            <Button x:Name="BtnReg" Content="Зарегистрироваться"></Button>
+            <Button x:Name="BtnVhod" Content="Войти" Click="BtnVhod_Click" FontSize="16" FontFamily="Gill Sans Nova" Cursor="Hand" FontWeight="Bold"/>
+            <TextBlock Text="Или" HorizontalAlignment="Center" FontSize="16" FontFamily="Gill Sans Nova"></TextBlock>
+            <Button x:Name="BtnReg" Content="Зарегистрироваться" Click="BtnReg_Click" FontSize="16" FontFamily="Gill Sans Nova" Cursor="Hand" FontWeight="Bold"></Button>
         </StackPanel>
 
     </Grid>

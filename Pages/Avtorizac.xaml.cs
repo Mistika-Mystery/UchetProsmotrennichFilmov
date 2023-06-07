@@ -22,10 +22,11 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class Avtorizac : Page
     {
+       
         public Avtorizac()
         {
             InitializeComponent();
-           
+          
         }
 
         private void BtnVhod_Click(object sender, RoutedEventArgs e)
@@ -60,6 +61,13 @@ namespace UchetProsmotrennichFilmov.Pages
             {
                 MessageBox.Show("Такого пользователя \n      не существует\nПопробуйте еще раз\n           ИЛИ\nЗарегестрируйтесь");
             }
+        }
+
+        private void BtnReg_Click(object sender, RoutedEventArgs e)
+        {
+            Registracia registracia= new Registracia();
+            registracia.Show();
+            
         }
     }
 }

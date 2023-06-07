@@ -1,0 +1,47 @@
+﻿<Window x:Class="UchetProsmotrennichFilmov.Pages.Registracia"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
+        mc:Ignorable="d"
+        Title="Registracia" Height="440" Width="600">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF276E8B" Offset="0.998"/>
+                <GradientStop Color="#FFB9EAFF" Offset="0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Введите Логин" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+
+        <TextBlock Text="Введите пароль" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+        <TextBlock Text="Повторите Пароль" Grid.Row="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+        <TextBlock Text="Введите Ваш e-mail" Grid.Row="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+        <TextBlock Text="Введите Дату Вашего Рождения" Grid.Row="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+
+        <TextBox x:Name="tblogin" Text="{Binding Login}" Grid.Column="1" VerticalAlignment="Center" MaxLength="50" FontSize="16" />
+
+        <TextBox x:Name="tbpass1" Text="{Binding Pass}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" MaxLength="50" FontSize="16"/>
+        <TextBox x:Name="tbpass2" Text="{Binding Pass2}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" />
+        <TextBox x:Name="tbemail" Text="{Binding Email}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" FontSize="16" />
+        <DatePicker x:Name="tbdr" SelectedDate="{Binding DR, StringFormat=dd.mm.yyyy}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" FirstDayOfWeek="Monday" DisplayDate="2000-01-01" DisplayDateStart="1950-01-01" FontSize="16" />
+        <Button Content=" Назад/Отменить " HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" FontSize="18" Margin="0,0,0,10" Cursor="Hand" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+        <Button Content=" Зарегистрироваться " HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" FontSize="18" Grid.Column="1" IsDefault="True" Margin="0,0,0,10" Cursor="Hand" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
