@@ -32,17 +32,6 @@
         <Image Grid.Column="1" Grid.ColumnSpan="1" Source="/Image/arrow-back.png" VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Margin="0,0,10,0" ToolTip="Назад"/>
         <Frame x:Name="MyFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
         
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
-            <Label Content="Добро Пожаловать!" FontSize="24" FontWeight="Bold"></Label>
-            <Label Content="Авторизируйтесь:" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
-            <StackPanel>
-                <TextBlock Text="Введите ваш логин (Почта): "></TextBlock>
-                <TextBox></TextBox>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="Введите ваш пароль: "></TextBlock>
-                <TextBox></TextBox>
-            </StackPanel>
-        </StackPanel>
+        
     </Grid>
 </Window>
