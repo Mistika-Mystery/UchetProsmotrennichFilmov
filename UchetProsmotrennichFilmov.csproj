@@ -130,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Registrac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Avtorizac.xaml.cs">
@@ -137,6 +141,9 @@
     </Compile>
     <Compile Include="Pages\Katalog.xaml.cs">
       <DependentUpon>Katalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Registrac.xaml.cs">
+      <DependentUpon>Registrac.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
