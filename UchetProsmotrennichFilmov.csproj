@@ -75,6 +75,7 @@
     <Compile Include="BD\Actors.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BD\AppDB.cs" />
     <Compile Include="BD\Films.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -125,10 +126,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Katalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Avtorizac.xaml.cs">
       <DependentUpon>Avtorizac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Katalog.xaml.cs">
+      <DependentUpon>Katalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

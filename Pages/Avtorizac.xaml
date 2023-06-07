@@ -11,19 +11,19 @@
     <Grid>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
-            <Label Content="Добро Пожаловать!" FontSize="24" FontWeight="Bold"></Label>
+            <Label Content="Добро Пожаловать!" FontSize="24" FontWeight="Bold" ToolTip="Маша 111 \\\ Админ 111"></Label>
             <Label Content="Авторизируйтесь:" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
             <StackPanel>
-                <TextBlock Text="Введите ваш логин (Почта): "></TextBlock>
-                <TextBox></TextBox>
+                <TextBlock Text="Введите ваш логин: "></TextBlock>
+                <TextBox x:Name="TBLogo"></TextBox>
             </StackPanel>
             <StackPanel Margin="0,0,0,5">
                 <TextBlock Text="Введите ваш пароль: "></TextBlock>
-                <PasswordBox></PasswordBox>
+                <PasswordBox x:Name="PBPass"></PasswordBox>
             </StackPanel>
-            <Button Content="Войти"></Button>
+            <Button x:Name="BtnVhod" Content="Войти" Click="BtnVhod_Click"></Button>
             <TextBlock Text="Или" HorizontalAlignment="Center"></TextBlock>
-            <Button Content="Зарегистрироваться"></Button>
+            <Button x:Name="BtnReg" Content="Зарегистрироваться"></Button>
         </StackPanel>
 
     </Grid>
