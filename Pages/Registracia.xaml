@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
         mc:Ignorable="d"
-        Title="Регистрация" Height="440" Width="600" MinWidth="450" MinHeight="400" WindowStyle="None" HorizontalContentAlignment="Center" Icon="/Image/icons-842889_1280.png">
+        Title="Регистрация" Height="440" Width="600" MinWidth="450" MinHeight="400" WindowStyle="None" HorizontalContentAlignment="Center" Icon="/Image/video_icon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Image/fon3.jpg"/>
@@ -24,19 +24,19 @@
             <ColumnDefinition Width="37*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Введите Логин" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+        <TextBlock Text="Введите Логин" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
 
-        <TextBlock Text="Введите Пароль" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
-        <TextBlock Text="Повторите Пароль" Grid.Row="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
-        <TextBlock Text="Введите Ваш e-mail" Grid.Row="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
-        <TextBlock Text="Введите Дату Вашего Рождения" Grid.Row="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova"/>
+        <TextBlock Text="Введите Пароль" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+        <TextBlock Text="Повторите Пароль" Grid.Row="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+        <TextBlock Text="Введите Ваш e-mail" Grid.Row="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+        <TextBlock Text="Введите Дату Вашего Рождения" Grid.Row="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
 
         <TextBox x:Name="tblogin" Text="{Binding Login}" Grid.Column="1" VerticalAlignment="Center" MaxLength="50" FontSize="16" />
 
         <TextBox x:Name="tbpass1" Text="{Binding Pass}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" MaxLength="50" FontSize="16"/>
         <TextBox x:Name="tbpass2" Text="{Binding Pass2}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" />
         <TextBox x:Name="tbemail" Text="{Binding Email}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" FontSize="16" />
-        <DatePicker x:Name="tbdr" SelectedDate="{Binding DR, StringFormat=dd.mm.yyyy}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" FirstDayOfWeek="Monday" DisplayDate="2000-01-01" DisplayDateStart="1950-01-01" FontSize="16" />
+        <DatePicker x:Name="tbdr" SelectedDate="{Binding DR, StringFormat=dd.mm.yyyy}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" FirstDayOfWeek="Monday" DisplayDate="2000-01-01" DisplayDateStart="1950-01-01" FontSize="16" FontWeight="Bold" />
         <Button x:Name="BtnClose" Content=" Закрыть/Отменить " HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" FontSize="18" Margin="0,0,0,10" Cursor="Hand" FontFamily="Gill Sans Nova" FontWeight="Bold" Click="BtnClose_Click"/>
         <Button x:Name="BtnRegistr" Content=" Зарегистрироваться " HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="#FFE4E4E4" FontSize="18" Grid.Column="1" IsDefault="True" Margin="0,0,0,10" Cursor="Hand" FontFamily="Gill Sans Nova" FontWeight="Bold" Click="BtnRegistr_Click"/>
 

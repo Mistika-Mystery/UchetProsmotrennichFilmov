@@ -25,7 +25,9 @@ namespace UchetProsmotrennichFilmov.Pages
             InitializeComponent();
         }
 
-        private void ImgBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+       
+
+        private void TxtLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (MessageBox.Show($"Вы уверены, что хотите выйти?",
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
@@ -35,7 +37,5 @@ namespace UchetProsmotrennichFilmov.Pages
                 Window.GetWindow(this).Close();
             }
         }
-
-     
     }
 }
