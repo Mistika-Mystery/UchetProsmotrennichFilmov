@@ -36,9 +36,6 @@ namespace UchetProsmotrennichFilmov.Pages
             }
         }
 
-        private void Glavnoe_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
     }
 }
