@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище UchetFilmofModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UchetFilmofModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ActorFilm">
           <Key>
             <PropertyRef Name="FilmId" />
@@ -19,7 +19,7 @@
           </Key>
           <Property Name="IdActors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ImageActor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageActor" Type="varbinary(max)" />
           <Property Name="DR" Type="date" Nullable="false" />
           <Property Name="StranaId" Type="int" Nullable="false" />
         </EntityType>
@@ -41,11 +41,12 @@
           <Property Name="TimeFilm" Type="int" Nullable="false" />
           <Property Name="GodFilma" Type="int" Nullable="false" />
           <Property Name="IdRezhiser" Type="int" Nullable="false" />
-          <Property Name="ImageFilm" Type="nvarchar(max)" />
+          <Property Name="ImageFilm" Type="varbinary(max)" />
           <Property Name="TimeDobavlenia" Type="date" Nullable="false" />
           <Property Name="Opisanie" Type="nvarchar(max)" />
           <Property Name="IdTip" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" />
+          <Property Name="Reting" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="HochuPosmotret">
           <Key>
@@ -78,7 +79,8 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="FilmId" Type="int" Nullable="false" />
           <Property Name="TimeDobazlenia" Type="date" Nullable="false" />
-          <Property Name="Reiting" Type="int" Nullable="false" />
+          <Property Name="MyReiting" Type="int" Nullable="false" />
+          <Property Name="komentarii" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Rezhisers">
           <Key>
@@ -86,7 +88,7 @@
           </Key>
           <Property Name="IdRezhiser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ImageRezhiser" Type="nvarchar(max)" />
+          <Property Name="ImageRezhiser" Type="varbinary(max)" />
           <Property Name="DR" Type="date" Nullable="false" />
           <Property Name="StranaId" Type="int" Nullable="false" />
         </EntityType>
@@ -444,8 +446,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UchetFilmofModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -455,7 +456,7 @@
           </Key>
           <Property Name="IdActors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageActor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageActor" Type="String" MaxLength="Max" FixedLength="false" />
           <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StranaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Strany" Relationship="Self.FK_Actors_Strany" FromRole="Actors" ToRole="Strany" />
@@ -471,7 +472,7 @@
           <Property Name="TimeFilm" Type="Int32" Nullable="false" />
           <Property Name="GodFilma" Type="Int32" Nullable="false" />
           <Property Name="IdRezhiser" Type="Int32" Nullable="false" />
-          <Property Name="ImageFilm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageFilm" Type="String" MaxLength="Max" FixedLength="false" />
           <Property Name="TimeDobavlenia" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdTip" Type="Int32" Nullable="false" />
@@ -485,6 +486,7 @@
           <NavigationProperty Name="Users1" Relationship="Self.Faforit" FromRole="Films" ToRole="Users" />
           <NavigationProperty Name="Users2" Relationship="Self.HochuPosmotret" FromRole="Films" ToRole="Users" />
           <NavigationProperty Name="Janr" Relationship="Self.JanrFilms" FromRole="Films" ToRole="Janr" />
+          <Property Name="Reting" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Janr">
           <Key>
@@ -505,6 +507,8 @@
           <Property Name="Reiting" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Films" Relationship="Self.FK_UserFilm_Films" FromRole="Prosmotreno" ToRole="Films" />
           <NavigationProperty Name="Users" Relationship="Self.FK_UserFilm_Users" FromRole="Prosmotreno" ToRole="Users" />
+          <Property Name="MyReiting" Type="Int32" Nullable="false" />
+          <Property Name="komentarii" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Rezhisers">
           <Key>
@@ -512,7 +516,7 @@
           </Key>
           <Property Name="IdRezhiser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageRezhiser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageRezhiser" Type="String" MaxLength="Max" FixedLength="false" />
           <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StranaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Films" Relationship="Self.FK_Films_Rezhisers" FromRole="Rezhisers" ToRole="Films" />
@@ -790,6 +794,7 @@
           <EntitySetMapping Name="Films">
             <EntityTypeMapping TypeName="UchetFilmofModel.Films">
               <MappingFragment StoreEntitySet="Films">
+                <ScalarProperty Name="Reting" ColumnName="Reting" />
                 <ScalarProperty Name="IdFilm" ColumnName="IdFilm" />
                 <ScalarProperty Name="IdStrana" ColumnName="IdStrana" />
                 <ScalarProperty Name="NameFilm" ColumnName="NameFilm" />
@@ -815,10 +820,11 @@
           <EntitySetMapping Name="Prosmotreno">
             <EntityTypeMapping TypeName="UchetFilmofModel.Prosmotreno">
               <MappingFragment StoreEntitySet="Prosmotreno">
+                <ScalarProperty Name="komentarii" ColumnName="komentarii" />
+                <ScalarProperty Name="MyReiting" ColumnName="MyReiting" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FilmId" ColumnName="FilmId" />
                 <ScalarProperty Name="TimeDobazlenia" ColumnName="TimeDobazlenia" />
-                <ScalarProperty Name="Reiting" ColumnName="Reiting" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

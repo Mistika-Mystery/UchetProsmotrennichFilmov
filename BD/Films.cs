@@ -35,6 +35,7 @@ namespace UchetProsmotrennichFilmov.BD
         public string Opisanie { get; set; }
         public int IdTip { get; set; }
         public Nullable<int> IdUser { get; set; }
+        public int Reting { get; set; }
     
         public virtual Rezhisers Rezhisers { get; set; }
         public virtual Strany Strany { get; set; }

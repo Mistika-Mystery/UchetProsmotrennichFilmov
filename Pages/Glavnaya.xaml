@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
-        mc:Ignorable="d" MinWidth="600" MinHeight="400" MaxWidth="1000" MaxHeight="800" Icon="/Image/video_icon.png" Title="Учет Просмотренных Фильмов">
+        mc:Ignorable="d" MinWidth="600" MinHeight="400" MaxWidth="1000" MaxHeight="800" Icon="/Image/video_icon.png" Title="Учет Просмотренных Фильмов" BorderThickness="5,5,5,5">
     <Window.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
     </Window.Resources>
@@ -49,7 +49,7 @@
                         
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True" ToolTip="Отредактируй меня двойным щелчком">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
@@ -135,11 +135,11 @@
                                     Grid.Column="1">
                                                 <TextBlock Text="Отметить как: " FontWeight="Bold"/>
                                                 <Label Width="30" />
-                                                <Image x:Name="ImgIzbr" ToolTip="Добавить в Избранное" Source="/Image/izb.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30"/>
+                                                <Image x:Name="ImgIzbr" ToolTip="Добавить в Избранное" Source="/Image/izb.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Cursor="Hand"/>
                                                 <Label Width="30" />
-                                                <Image x:Name="ImgProsmotr" ToolTip="Просмотренно" Source="/Image/prosmot.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30"/>
+                                                <Image x:Name="ImgProsmotr" ToolTip="Просмотренно" Source="/Image/prosmot.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Cursor="Hand"/>
                                                 <Label Width="30" />
-                                                <Image x:Name="ImgHochu" ToolTip="Хочу Посмотреть" Source="/Image/attention.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35"/>
+                                                <Image x:Name="ImgHochu" ToolTip="Хочу Посмотреть" Source="/Image/attention.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Cursor="Hand"/>
 
 
 

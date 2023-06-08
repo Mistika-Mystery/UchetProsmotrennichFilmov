@@ -24,7 +24,7 @@ namespace UchetProsmotrennichFilmov.BD
         {
             if (_context == null)
                 _context = new UchetFilmofEntities();
-
+    
             return _context;
         }
     
@@ -43,6 +43,5 @@ namespace UchetProsmotrennichFilmov.BD
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tip> Tip { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-
     }
 }

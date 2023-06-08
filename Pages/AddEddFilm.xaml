@@ -5,59 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
         mc:Ignorable="d"
-        Title="AddEddFilm" Height="450" Width="800">
+        Title="Учет Просмотренных Фильмов" Height="450" Width="550" Icon="/Image/video_icon.png" MinWidth="500" MinHeight="400" WindowStyle="None">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/fon3.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="5" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" Content="Создание / Редактирование" FontWeight="Bold" FontFamily="Gill Sans Nova Ultra Bold" FontSize="14"></Label>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2">
+            
+                <TextBlock  Text="Название: " HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            <TextBox Name="TxtName" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ></TextBox>
+                <TextBlock  Text="Страна: " FontWeight="Bold"></TextBlock>
+            <ComboBox Name="ComboOne" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana"></ComboBox>
+                <TextBlock Text="Тип: " FontWeight="Bold"></TextBlock>
+            <ComboBox Name="ComboTwo" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"></ComboBox>
+            <TextBlock  Text="Режиссер: " FontWeight="Bold"></TextBlock>
+            <ComboBox Name="ComboThr" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO"></ComboBox>
+                <TextBlock  Text="Год: " FontWeight="Bold"></TextBlock>
+            <TextBox Name="TxtName1" ></TextBox>
+            <TextBlock  Text="Длительность в мин: " FontWeight="Bold"></TextBlock>
+            <TextBox Name="TxtName2" ></TextBox>
+            <TextBlock  Text="Описание: " FontWeight="Bold"></TextBlock>
+            <TextBox Name="TxtName3" TextWrapping="Wrap"></TextBox>
+
+            </StackPanel>
+       
+        
+    
+        <StackPanel Grid.Column="3" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="Название: "></TextBlock>
-                    <TextBox Name="TxtName" MaxLength="100"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="Страна: "></TextBlock>
-                    <ComboBox Name="ComboOne"></ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Тип: "></TextBlock>
-                    <ComboBox Name="ComboTwo"></ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="Режиссер: "></TextBlock>
-                    <ComboBox Name="ComboThr"></ComboBox>
-                </StackPanel>
-                
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="Год: "></TextBlock>
-                    <TextBox Name="TxtName1" MaxLength="100"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="Длительность в мин: "></TextBlock>
-                    <TextBox Name="TxtName2" MaxLength="100"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  Text="Описание: "></TextBlock>
-                    <TextBox Name="TxtName3" MaxLength="100" TextWrapping="Wrap"></TextBox>
-                </StackPanel>
+                <Border Margin="5" Width="150"  BorderThickness="1">
+                    <Image x:Name="ImageSerice"/>
+                </Border>
+                <Button Height="30" Width="150" Margin="5" Name="SelectImageBtn" Click="SelectImageBtn_Click" Content="Выбрать фотографию" FontWeight="Bold" Cursor="Hand"/>
+                <Button Height="30" Width="150" Margin="5" Name="SaveBtn" Click="SaveBtn_Click" Content="Coxpанить" FontWeight="Bold" Cursor="Hand"></Button>
             </StackPanel>
-            <StackPanel VerticalAlignment="Center">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Border Margin="5" Height="175" Width="200"  BorderThickness="1">
-                        <Image x:Name="ImageSerice"/>
-                    </Border>
-                    <Button Height="30" Width="200" Margin="5" Name="SelectImageBtn" Click="SelectImageBtn_Click" Content="Выбрать фотографию"/>
-                    <Button Height="30" Width="200" Margin="5" Name="SaveBtn" Click="SaveBtn_Click" Content="Coxpанить"></Button>
-                </StackPanel>
-            </StackPanel>
-
-        </StackPanel>
-        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Name="BackBtn" Click="BackBtn_Click" Content="Назад"/>
-            <Button Name="LogOutBtn" Click="LogOutBtn_Click" Content="Выйти"/>
         </StackPanel>
 
 
-
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="5" Grid.Row="1" Grid.Column="0">
+           
+            <Button Name="LogOutBtn" Click="LogOutBtn_Click" Content=" Выйти / Отменить " FontWeight="Bold" VerticalAlignment="Top" Cursor="Hand"/>
+        </StackPanel>
 
 
     </Grid>

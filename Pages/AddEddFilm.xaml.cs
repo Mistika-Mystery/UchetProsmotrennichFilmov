@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using UchetProsmotrennichFilmov.BD;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using Microsoft.Win32;
+using System.IO;
 
 namespace UchetProsmotrennichFilmov.Pages
 {
@@ -35,9 +37,9 @@ namespace UchetProsmotrennichFilmov.Pages
             row = films;
             DataContext = row;
             TxtName.Text = row.NameFilm;
-            ComboOne.SelectedIndex = row.IdStrana - 1;
-            ComboTwo.SelectedIndex = row.IdTip - 1;
-            ComboThr.SelectedIndex = row.IdRezhiser - 1;
+            ComboOne.ItemsSource = BD.AppDB.db.Strany.ToList();
+            ComboTwo.ItemsSource = BD.AppDB.db.Tip.ToList();
+            ComboThr.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
             TxtName1.Text = row.GodFilma.ToString();
             TxtName2.Text = row.TimeFilm.ToString();
             TxtName3.Text = row.Opisanie;
@@ -48,7 +50,15 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void SelectImageBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog fileOpen = new OpenFileDialog();
+            fileOpen.Multiselect = false;
+            fileOpen.Filter = "Image | *.png; *.jpg; *.jpeg";
+            if (fileOpen.ShowDialog() == true)
+            {
+                data = File.ReadAllBytes(fileOpen.FileName);
+                ImageSerice.Source = new ImageSourceConverter()
+                   .ConvertFrom(data) as ImageSource;
+            }
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -63,7 +73,11 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void LogOutBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show($"Вы уверены, что хотите вернуться?\nНесохраненные данные могут быть утеряны",
+                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
