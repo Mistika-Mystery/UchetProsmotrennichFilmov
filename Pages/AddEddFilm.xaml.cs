@@ -43,6 +43,7 @@ namespace UchetProsmotrennichFilmov.Pages
             TxtName1.Text = row.GodFilma.ToString();
             TxtName2.Text = row.TimeFilm.ToString();
             TxtName3.Text = row.Opisanie;
+            TxtName4.Text = row.Ocenka.ToString();
 
             //ImageSerice.Source = new ImageSourceConverter().ConvertFrom(row.ImageFilm) as ImageSource;
 
