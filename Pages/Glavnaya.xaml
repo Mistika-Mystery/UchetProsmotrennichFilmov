@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
-        mc:Ignorable="d" MinWidth="600" MinHeight="400" MaxWidth="1000" MaxHeight="800" Icon="/Image/video_icon.png" Title="Учет Просмотренных Фильмов" BorderThickness="5,5,5,5">
+        mc:Ignorable="d" MinWidth="600" MinHeight="400" MaxWidth="10010" MaxHeight="800" Icon="/Image/video_icon.png" Title="Учет Просмотренных Фильмов" BorderThickness="5,5,5,5">
     <Window.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
     </Window.Resources>
@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
   
         <StackPanel VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0">
-                <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="24" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="Сменить пользователя" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
+            <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="24" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="Сменить пользователя" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Image/video_icon.png" Width="25"></Image>
             <Label x:Name="TBdev" Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" FontFamily="Gill Sans Nova" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="TBdev_MouseLeftButtonDown"/>
@@ -44,7 +44,7 @@
             <TabItem.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="*"/>
                         
                     </Grid.ColumnDefinitions>
@@ -158,32 +158,32 @@
                     </DataGrid.Columns>
                 </DataGrid>
                     <StackPanel Grid.Column="1">
-                        <TextBlock Text="Поиск по названию и описанию"/>
+                        <TextBlock Text="Поиск по названию и описанию" FontWeight="Bold"/>
                         <TextBox x:Name="TBoxSearch" ></TextBox>
                         <Label Height="5"/>
-                        <TextBlock Text="Поиск по типу"/>
+                        <TextBlock Text="Поиск по типу" FontWeight="Bold"/>
                         <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"/>
                         <Label Height="5"/>
                         
-                        <TextBlock Text="Поиск по жанру"/>
+                        <TextBlock Text="Поиск по жанру" FontWeight="Bold"/>
                         <ComboBox x:Name="CBJanr" SelectedItem="{Binding Janr}" DisplayMemberPath="NameJanr">
                       
                         </ComboBox>
                         <Label Height="5"/>
 
-                        <TextBlock Text="Поиск по стране"/>
+                        <TextBlock Text="Поиск по стране" FontWeight="Bold"/>
                         <ComboBox x:Name="CBStrana" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana">
                           
                         </ComboBox>
                         <Label Height="5"/>
 
-                        <TextBlock Text="Поиск по актеру"/>
+                        <TextBlock Text="Поиск по актеру" FontWeight="Bold"/>
                         <ComboBox x:Name="CBactor" SelectedItem="{Binding Actors}" DisplayMemberPath="FIO">
                        
                         </ComboBox>
                         <Label Height="5"/>
 
-                        <TextBlock Text="Поиск по режисеру"/>
+                        <TextBlock Text="Поиск по режисеру" FontWeight="Bold"/>
                         <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO">
 
                         </ComboBox>

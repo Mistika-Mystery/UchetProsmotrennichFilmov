@@ -12,7 +12,7 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -52,14 +52,15 @@
                     <Image x:Name="ImageSerice"/>
                 </Border>
                 <Button Height="30" Width="150" Margin="5" Name="SelectImageBtn" Click="SelectImageBtn_Click" Content="Выбрать фотографию" FontWeight="Bold" Cursor="Hand"/>
-                <Button Height="30" Width="150" Margin="5" Name="SaveBtn" Click="SaveBtn_Click" Content="Coxpанить" FontWeight="Bold" Cursor="Hand"></Button>
+                
             </StackPanel>
         </StackPanel>
 
 
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="5" Grid.Row="1" Grid.Column="0">
-           
-            <Button Name="LogOutBtn" Click="LogOutBtn_Click" Content=" Выйти / Отменить " FontWeight="Bold" VerticalAlignment="Top" Cursor="Hand"/>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.ColumnSpan="5" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <Button Name="SaveBtn" Click="SaveBtn_Click" Content="  Coxpанить  " FontWeight="Bold" Cursor="Hand" VerticalAlignment="Top" Width="140" Height="25"/>
+            <Label Width="50"/>
+            <Button Name="LogOutBtn" Click="LogOutBtn_Click" Content=" Выйти / Отменить " FontWeight="Bold" VerticalAlignment="Top" Cursor="Hand" Width="144" Height="25"/>
         </StackPanel>
 
 

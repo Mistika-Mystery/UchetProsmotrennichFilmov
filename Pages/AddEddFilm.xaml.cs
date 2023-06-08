@@ -16,6 +16,8 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Microsoft.Win32;
 using System.IO;
+using System.Windows.Navigation;
+using static System.Net.WebRequestMethods;
 
 namespace UchetProsmotrennichFilmov.Pages
 {
@@ -45,7 +47,7 @@ namespace UchetProsmotrennichFilmov.Pages
             TxtName3.Text = row.Opisanie;
             TxtName4.Text = row.Ocenka.ToString();
 
-            //ImageSerice.Source = new ImageSourceConverter().ConvertFrom(row.ImageFilm) as ImageSource;
+            if (row.ImageFilm != null) ImageSerice.Source = new ImageSourceConverter().ConvertFrom(row.ImageFilm) as ImageSource;
 
         }
 
@@ -64,13 +66,64 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder errors = new StringBuilder();
+            
+            if (string.IsNullOrWhiteSpace(TxtName.Text))
+                errors.AppendLine("Введите Название фильма");
+            if (string.IsNullOrWhiteSpace(TxtName1.Text))
+                errors.AppendLine("Введите год фильма");
+            if (string.IsNullOrWhiteSpace(TxtName2.Text))
+                errors.AppendLine("Введите время фильма");
+            if (string.IsNullOrWhiteSpace(TxtName3.Text))
+                errors.AppendLine("Повторите описание фильма");
+            if (string.IsNullOrWhiteSpace(TxtName4.Text))
+                errors.AppendLine("Введите общий рейтинг");
 
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+            if (row == null)
+            {
+                var films = new Films();
+                
+                    films = new Films
+                    {
+                        NameFilm = TxtName.Text,
+                        IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.SelectedItem.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
+                        IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault(),
+                        IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault(),
+                        ImageFilm = data
+                    };
+            
+
+                AppDB.db.Films.Add(films);
+                AppDB.db.SaveChanges();
+                MessageBox.Show("Фильм успешно добавлен", "Поздравляем!", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            else
+            {
+                row.NameFilm = TxtName.Text;
+                row.IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.SelectedItem.ToString()).Select(p => p.IdStrana).FirstOrDefault();
+                row.IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault();
+                row.IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault();
+                if (data != null)
+                    row.ImageFilm = data;
+
+                AppDB.db.SaveChanges();
+                MessageBox.Show("Фильм успешно добавлен", "Поздравляем!", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
         }
+    
 
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
+
+
+
+
 
         private void LogOutBtn_Click(object sender, RoutedEventArgs e)
         {
