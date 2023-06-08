@@ -17,7 +17,6 @@ namespace UchetProsmotrennichFilmov.BD
         public int UserId { get; set; }
         public int FilmId { get; set; }
         public System.DateTime TimeDobazlenia { get; set; }
-        public int Reiting { get; set; }
         public int MyReiting { get; set; }
         public string komentarii { get; set; }
     

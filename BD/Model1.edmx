@@ -46,7 +46,7 @@
           <Property Name="Opisanie" Type="nvarchar(max)" />
           <Property Name="IdTip" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" />
-          <Property Name="Reting" Type="int" Nullable="false" />
+          <Property Name="Ocenka" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="HochuPosmotret">
           <Key>
@@ -456,7 +456,7 @@
           </Key>
           <Property Name="IdActors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageActor" Type="String" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageActor" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StranaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Strany" Relationship="Self.FK_Actors_Strany" FromRole="Actors" ToRole="Strany" />
@@ -472,7 +472,7 @@
           <Property Name="TimeFilm" Type="Int32" Nullable="false" />
           <Property Name="GodFilma" Type="Int32" Nullable="false" />
           <Property Name="IdRezhiser" Type="Int32" Nullable="false" />
-          <Property Name="ImageFilm" Type="String" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageFilm" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TimeDobavlenia" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdTip" Type="Int32" Nullable="false" />
@@ -486,7 +486,7 @@
           <NavigationProperty Name="Users1" Relationship="Self.Faforit" FromRole="Films" ToRole="Users" />
           <NavigationProperty Name="Users2" Relationship="Self.HochuPosmotret" FromRole="Films" ToRole="Users" />
           <NavigationProperty Name="Janr" Relationship="Self.JanrFilms" FromRole="Films" ToRole="Janr" />
-          <Property Name="Reting" Type="Int32" Nullable="false" />
+          <Property Name="Ocenka" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Janr">
           <Key>
@@ -504,7 +504,6 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="FilmId" Type="Int32" Nullable="false" />
           <Property Name="TimeDobazlenia" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Reiting" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Films" Relationship="Self.FK_UserFilm_Films" FromRole="Prosmotreno" ToRole="Films" />
           <NavigationProperty Name="Users" Relationship="Self.FK_UserFilm_Users" FromRole="Prosmotreno" ToRole="Users" />
           <Property Name="MyReiting" Type="Int32" Nullable="false" />
@@ -516,7 +515,7 @@
           </Key>
           <Property Name="IdRezhiser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageRezhiser" Type="String" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageRezhiser" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="DR" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="StranaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Films" Relationship="Self.FK_Films_Rezhisers" FromRole="Rezhisers" ToRole="Films" />
@@ -794,7 +793,7 @@
           <EntitySetMapping Name="Films">
             <EntityTypeMapping TypeName="UchetFilmofModel.Films">
               <MappingFragment StoreEntitySet="Films">
-                <ScalarProperty Name="Reting" ColumnName="Reting" />
+                <ScalarProperty Name="Ocenka" ColumnName="Ocenka" />
                 <ScalarProperty Name="IdFilm" ColumnName="IdFilm" />
                 <ScalarProperty Name="IdStrana" ColumnName="IdStrana" />
                 <ScalarProperty Name="NameFilm" ColumnName="NameFilm" />

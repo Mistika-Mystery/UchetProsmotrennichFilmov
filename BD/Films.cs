@@ -30,12 +30,12 @@ namespace UchetProsmotrennichFilmov.BD
         public int TimeFilm { get; set; }
         public int GodFilma { get; set; }
         public int IdRezhiser { get; set; }
-        public string ImageFilm { get; set; }
+        public byte[] ImageFilm { get; set; }
         public System.DateTime TimeDobavlenia { get; set; }
         public string Opisanie { get; set; }
         public int IdTip { get; set; }
         public Nullable<int> IdUser { get; set; }
-        public int Reting { get; set; }
+        public int Ocenka { get; set; }
     
         public virtual Rezhisers Rezhisers { get; set; }
         public virtual Strany Strany { get; set; }

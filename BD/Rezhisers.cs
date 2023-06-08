@@ -22,7 +22,7 @@ namespace UchetProsmotrennichFilmov.BD
     
         public int IdRezhiser { get; set; }
         public string FIO { get; set; }
-        public string ImageRezhiser { get; set; }
+        public byte[] ImageRezhiser { get; set; }
         public System.DateTime DR { get; set; }
         public int StranaId { get; set; }
     
