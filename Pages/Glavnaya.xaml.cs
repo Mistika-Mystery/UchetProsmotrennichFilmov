@@ -23,6 +23,7 @@ namespace UchetProsmotrennichFilmov.Pages
         public Glavnaya()
         {
             InitializeComponent();
+
         }
 
        

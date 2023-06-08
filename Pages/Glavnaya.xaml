@@ -161,6 +161,44 @@
                             <ComboBoxItem Content="Новая Зеландия"/>
                             <ComboBoxItem Content="СССР"/>
                         </ComboBox>
+                        <Label Height="5"/>
+
+                        <TextBlock Text="Поиск по актеру"/>
+                        <ComboBox x:Name="CBactor">
+                            <ComboBoxItem Content="Антонио Бандерес"/>
+                            <ComboBoxItem Content="Гай Ричи"/>
+                            <ComboBoxItem Content="Бред Пит"/>
+                            <ComboBoxItem Content="Анджелинна Джоли"/>
+                            <ComboBoxItem Content="Дженифер Энистон"/>
+                            <ComboBoxItem Content="Кеану Рифз"/>
+                            <ComboBoxItem Content="Рикки Мартин"/>
+                            <ComboBoxItem Content="Моника Белучи"/>
+                            <ComboBoxItem Content="Умма Турман"/>
+                            <ComboBoxItem Content="Милла Йолович"/>
+                            <ComboBoxItem Content="Тиль Линдерман"/>
+                            <ComboBoxItem Content="Рихард Круспе"/>
+                            <ComboBoxItem Content="Сергей Безруков"/>
+                            <ComboBoxItem Content="Константин Кинчев"/>
+                            <ComboBoxItem Content="Михаил Горшенев"/>
+                            <ComboBoxItem Content="Андрей Князев"/>
+                        </ComboBox>
+                        <Label Height="5"/>
+
+                        <TextBlock Text="Поиск по режисеру"/>
+                        <ComboBox x:Name="CBRezhis">
+
+                            <ComboBoxItem Content="Фрэнк Дарабонт"/>
+                            <ComboBoxItem Content="Стивен Спилберг"/>
+                            <ComboBoxItem Content="Дэвид Финчер"/>
+                            <ComboBoxItem Content="Джеймс Кэмерон"/>
+                            <ComboBoxItem Content="Мартин Скорсезе"/>
+                            <ComboBoxItem Content="Кристофер Нолан"/>
+                            <ComboBoxItem Content="Квентин Тарантино"/>
+                            <ComboBoxItem Content="Питер Джексон"/>
+                            <ComboBoxItem Content="Роберт Земекис"/>
+                            <ComboBoxItem Content="Ридли Скотт"/>
+                            <ComboBoxItem Content="Андрей Звягинцев"/>
+                        </ComboBox>
 
                     </StackPanel>
                 </Grid>
