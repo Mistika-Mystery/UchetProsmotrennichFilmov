@@ -8,7 +8,7 @@
     <Window.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
     </Window.Resources>
-    <Grid ToolTip="Сменить пользователя">
+    <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Image/fon3.jpg"/>
         </Grid.Background>
@@ -34,7 +34,14 @@
 
      
         <TabControl Grid.Row="1" Grid.Column="1">
-            <TabItem x:Name="TCKatalog" Header=" Каталог " FontWeight="Bold">
+            <TabItem x:Name="h2">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Image/video_icon.png" VerticalAlignment="Center" Width="15"/>
+                        <TextBlock Margin="3">Каталог</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+            <TabItem.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
@@ -43,7 +50,12 @@
                     </Grid.ColumnDefinitions>
 
                     <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True">
-                    <DataGrid.Columns>
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                                </Style>
+                            </DataGrid.Resources>
+                        <DataGrid.Columns>
                             <DataGridTemplateColumn Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -52,9 +64,11 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="3*"/>
                                             <ColumnDefinition Width="3*"/>
+                                            
 
                                             </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
@@ -71,8 +85,8 @@
                                     Orientation="Horizontal" 
                                     Grid.Row="0" 
                                     Grid.Column="1">
-                                            <TextBlock Text="Имя: "/>
-                                            <TextBlock Text="{Binding NameFilm}" FontWeight="Bold"/>
+                                            
+                                            <TextBlock Text="{Binding NameFilm}" FontWeight="Bold" FontSize="16" TextDecorations="Underline"/>
 
                                         </StackPanel>
                                         <StackPanel 
@@ -115,10 +129,27 @@
                                                 <TextBlock Text="{Binding Reting}" FontWeight="Bold"/>
 
                                           </StackPanel>
+                                            <StackPanel 
+                                    Orientation="Horizontal" 
+                                    Grid.Row="6" 
+                                    Grid.Column="1">
+                                                <TextBlock Text="Отметить как: " FontWeight="Bold"/>
+                                                <Label Width="30" />
+                                                <Image x:Name="ImgIzbr" ToolTip="Добавить в Избранное" Source="/Image/izb.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30"/>
+                                                <Label Width="30" />
+                                                <Image x:Name="ImgProsmotr" ToolTip="Просмотренно" Source="/Image/prosmot.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30"/>
+                                                <Label Width="30" />
+                                                <Image x:Name="ImgHochu" ToolTip="Хочу Посмотреть" Source="/Image/attention.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35"/>
+
+
+
+                                            </StackPanel>
 
 
                                             <TextBlock Text="Описание: " Grid.Column="2" Grid.RowSpan="1"/>
-                                            <TextBox TextWrapping="Wrap" Text="{Binding Opisanie}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5" />
+                                            <TextBox TextWrapping="Wrap" Text="{Binding Opisanie}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" FontWeight="Bold" />
+
+                                            
 
                                         </Grid>
                                 </DataTemplate>
@@ -131,9 +162,7 @@
                         <TextBox x:Name="TBoxSearch" ></TextBox>
                         <Label Height="5"/>
                         <TextBlock Text="Поиск по типу"/>
-                        <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip">
-                            
-                        </ComboBox>
+                        <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"/>
                         <Label Height="5"/>
                         
                         <TextBlock Text="Поиск по жанру"/>
@@ -161,12 +190,66 @@
 
                     </StackPanel>
                 </Grid>
+            </TabItem.Content>
             </TabItem>
-            <TabItem Header=" Избранное " FontWeight="Bold" />
-            <TabItem Header=" Просмотренные " FontWeight="Bold" />
-            <TabItem Header=" Хочу Посмотреть " FontWeight="Bold" />
-            <TabItem Header=" Режиссеры " FontWeight="Bold" />
-            <TabItem Header=" Актеры " FontWeight="Bold" />
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Image/izb.png" VerticalAlignment="Center" Width="15"/>
+                        <TextBlock Margin="3">Избранное</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Label/>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Image/prosmot.png" VerticalAlignment="Center" Width="15"/>
+                        <TextBlock Margin="3">Просмотренные</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Label/>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Image/attention.png" VerticalAlignment="Center" Width="15"/>
+                        <TextBlock Margin="3">Хочу Посмотреть</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Label/>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Image/glav1.png" VerticalAlignment="Center" Width="15"/>
+                        <TextBlock Margin="3">Режиссеры</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Label/>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Image/act.png" VerticalAlignment="Center" Width="15"/>
+                        <TextBlock Margin="3">Актеры</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Label/>
+                </TabItem.Content>
+            </TabItem>
+
+
+           
         </TabControl>
     </Grid>
 </Window>

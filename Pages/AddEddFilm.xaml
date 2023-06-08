@@ -1,0 +1,64 @@
+﻿<Window x:Class="UchetProsmotrennichFilmov.Pages.AddEddFilm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
+        mc:Ignorable="d"
+        Title="AddEddFilm" Height="450" Width="800">
+    <Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Название: "></TextBlock>
+                    <TextBox Name="TxtName" MaxLength="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Страна: "></TextBlock>
+                    <ComboBox Name="ComboOne"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Тип: "></TextBlock>
+                    <ComboBox Name="ComboTwo"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Режиссер: "></TextBlock>
+                    <ComboBox Name="ComboThr"></ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Год: "></TextBlock>
+                    <TextBox Name="TxtName1" MaxLength="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Длительность в мин: "></TextBlock>
+                    <TextBox Name="TxtName2" MaxLength="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Описание: "></TextBlock>
+                    <TextBox Name="TxtName3" MaxLength="100" TextWrapping="Wrap"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Margin="5" Height="175" Width="200"  BorderThickness="1">
+                        <Image x:Name="ImageSerice"/>
+                    </Border>
+                    <Button Height="30" Width="200" Margin="5" Name="SelectImageBtn" Click="SelectImageBtn_Click" Content="Выбрать фотографию"/>
+                    <Button Height="30" Width="200" Margin="5" Name="SaveBtn" Click="SaveBtn_Click" Content="Coxpанить"></Button>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Name="BackBtn" Click="BackBtn_Click" Content="Назад"/>
+            <Button Name="LogOutBtn" Click="LogOutBtn_Click" Content="Выйти"/>
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+</Window>

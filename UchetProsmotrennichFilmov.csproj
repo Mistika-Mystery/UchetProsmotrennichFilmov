@@ -122,6 +122,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddEddFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Avtorizac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +144,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AddEddFilm.xaml.cs">
+      <DependentUpon>AddEddFilm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Avtorizac.xaml.cs">
       <DependentUpon>Avtorizac.xaml</DependentUpon>
     </Compile>
@@ -176,6 +183,7 @@
     <None Include="BD\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,6 +208,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\act.png" />
+    <Resource Include="Image\rezh.png" />
+    <Resource Include="Image\glav1.png" />
+    <Resource Include="Image\izb.png" />
+    <Resource Include="Image\attention.png" />
+    <Resource Include="Image\prosmot.png" />
     <Resource Include="Image\fon3.jpg" />
     <Resource Include="Image\fon.jpg" />
   </ItemGroup>

@@ -32,7 +32,7 @@ namespace UchetProsmotrennichFilmov.Pages
             KatalogGrid.ItemsSource = BD.AppDB.db.Films.ToList();
         }
 
-       
+
 
         private void TxtLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -54,6 +54,13 @@ namespace UchetProsmotrennichFilmov.Pages
                 mainWindow.Show();
                 Window.GetWindow(this).Close();
             }
+        }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var row = (sender as DataGridRow).DataContext as Films;
+            AddEddFilm addEddFilm = new AddEddFilm(row);
+            addEddFilm.Show();
         }
     }
 }
