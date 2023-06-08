@@ -29,8 +29,19 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void TxtLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (MessageBox.Show($"Вы уверены, что хотите выйти?",
+            if (MessageBox.Show($"Вы уверены, что хотите сменить пользователя?",
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Window.GetWindow(this).Close();
+            }
+        }
+
+        private void TBdev_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (MessageBox.Show($"Вы уверены, что хотите сменить пользователя?",
+               "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

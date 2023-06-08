@@ -24,12 +24,12 @@
             <ColumnDefinition Width="37*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Введите Логин" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+        <TextBlock Text="Введите Логин" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold" Margin="50,0,0,0"/>
 
-        <TextBlock Text="Введите Пароль" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
-        <TextBlock Text="Повторите Пароль" Grid.Row="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
-        <TextBlock Text="Введите Ваш e-mail" Grid.Row="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
-        <TextBlock Text="Введите Дату Вашего Рождения" Grid.Row="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold"/>
+        <TextBlock Text="Введите Пароль" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold" Margin="50,0,0,0"/>
+        <TextBlock Text="Повторите Пароль" Grid.Row="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold" Margin="50,0,0,0"/>
+        <TextBlock Text="Введите Ваш e-mail" Grid.Row="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold" Margin="50,0,0,0"/>
+        <TextBlock Text="Введите Ваше ДР" Grid.Row="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Gill Sans Nova" FontWeight="Bold" Margin="50,0,0,0"/>
 
         <TextBox x:Name="tblogin" Text="{Binding Login}" Grid.Column="1" VerticalAlignment="Center" MaxLength="50" FontSize="16" />
 

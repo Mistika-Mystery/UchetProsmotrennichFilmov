@@ -23,17 +23,17 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <!--<StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">-->
-        <StackPanel VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center">
-                <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="22" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="На Главную" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
-                 <Label Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" FontFamily="Gill Sans Nova" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+        <StackPanel VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="24" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="Сменить пользователя" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
+                 <Label x:Name="TBdev" Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" FontFamily="Gill Sans Nova" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="TBdev_MouseLeftButtonDown"/>
             </StackPanel>
 
         <!--</StackPanel>-->
         <TabControl Grid.Row="1" Grid.Column="1">
-            <TabItem x:Name="TCKatalog" Header=" Каталог ">
+            <TabItem x:Name="TCKatalog" Header=" Каталог " FontWeight="Bold">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="*"/>
                         
                     </Grid.ColumnDefinitions>
@@ -165,11 +165,11 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header=" Избранное " />
-            <TabItem Header=" Просмотренные " />
-            <TabItem Header=" Хочу Посмотреть " />
-            <TabItem Header=" Режиссеры " />
-            <TabItem Header=" Актеры " />
+            <TabItem Header=" Избранное " FontWeight="Bold" />
+            <TabItem Header=" Просмотренные " FontWeight="Bold" />
+            <TabItem Header=" Хочу Посмотреть " FontWeight="Bold" />
+            <TabItem Header=" Режиссеры " FontWeight="Bold" />
+            <TabItem Header=" Актеры " FontWeight="Bold" />
         </TabControl>
     </Grid>
 </Window>

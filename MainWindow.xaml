@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov"
         mc:Ignorable="d"
-        Title=" Учет Просмотренных Фильмов" Height="450" Width="800" Icon="/Image/video_icon.png" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="420">
+        Title=" Учет Просмотренных Фильмов" Height="450" Width="800" Icon="/Image/video_icon.png" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="420" Background="#FF765137">
     <Window.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
     </Window.Resources>
