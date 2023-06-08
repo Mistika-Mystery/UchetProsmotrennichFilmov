@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UchetProsmotrennichFilmov.BD;
 
 namespace UchetProsmotrennichFilmov.Pages
 {
@@ -23,7 +24,11 @@ namespace UchetProsmotrennichFilmov.Pages
         public Glavnaya()
         {
             InitializeComponent();
-
+            CBTip.ItemsSource = BD.AppDB.db.Tip.ToList();
+            CBJanr.ItemsSource = BD.AppDB.db.Janr.ToList();
+            CBStrana.ItemsSource = BD.AppDB.db.Strany.ToList();
+            CBactor.ItemsSource = BD.AppDB.db.Actors.ToList();
+            CBRezhis.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
         }
 
        
