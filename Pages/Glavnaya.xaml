@@ -126,7 +126,7 @@
                                     Grid.Row="5" 
                                     Grid.Column="1">
                                                 <TextBlock Text="Рейтинг: "/>
-                                                <TextBlock Text="{Binding Reting}" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding Ocenka}" FontWeight="Bold"/>
 
                                           </StackPanel>
                                             <StackPanel 
