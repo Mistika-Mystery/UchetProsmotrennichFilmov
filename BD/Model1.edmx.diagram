@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a03846bd47d8496982a5b8cacd9fef32" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="UchetFilmofModel.Actors" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UchetFilmofModel.Films" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UchetFilmofModel.Films" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="UchetFilmofModel.Janr" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="UchetFilmofModel.Prosmotreno" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="UchetFilmofModel.Rezhisers" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />

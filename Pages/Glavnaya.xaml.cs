@@ -29,6 +29,7 @@ namespace UchetProsmotrennichFilmov.Pages
             CBStrana.ItemsSource = BD.AppDB.db.Strany.ToList();
             CBactor.ItemsSource = BD.AppDB.db.Actors.ToList();
             CBRezhis.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
+            KatalogGrid.ItemsSource = BD.AppDB.db.Films.ToList();
         }
 
        
