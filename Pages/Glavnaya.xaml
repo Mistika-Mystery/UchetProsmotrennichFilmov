@@ -4,18 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
-        mc:Ignorable="d" MinWidth="600" MinHeight="400" MaxWidth="10010" MaxHeight="800" Icon="/Image/video_icon.png" Title="Учет Просмотренных Фильмов" BorderThickness="5,5,5,5">
+        mc:Ignorable="d" MinWidth="600" MinHeight="400" MaxWidth="1010" MaxHeight="800" Icon="/Image/video_icon.png" Title="Учет Просмотренных Фильмов" BorderThickness="5,5,5,5" d:DesignHeight="586.44">
     <Window.Resources>
         <Color x:Key="GradientStopColor1">White</Color>
     </Window.Resources>
-    <Grid>
+    <Grid >
         <Grid.Background>
             <ImageBrush ImageSource="/Image/fon3.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -33,7 +33,7 @@
         </StackPanel>
 
      
-        <TabControl Grid.Row="1" Grid.Column="1">
+        <TabControl Grid.Row="1" Grid.Column="1" Background="{x:Null}">
             <TabItem x:Name="h2">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -61,9 +61,9 @@
                                 <DataTemplate>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="3*"/>
-                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="*"/>
                                             
 
                                             </Grid.ColumnDefinitions>
@@ -80,7 +80,7 @@
                                     Source="{Binding ImageFilm}" 
                                     Grid.Column="0" 
                                     Grid.Row="0" 
-                                    Grid.RowSpan="6"/>
+                                    Grid.RowSpan="6" MaxWidth="150" MaxHeight="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                         <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="0" 
@@ -159,8 +159,8 @@
                 </DataGrid>
                     <StackPanel Grid.Column="1">
                         <TextBlock Text="Поиск по названию и описанию" FontWeight="Bold"/>
-                        <TextBox x:Name="TBoxSearch" ></TextBox>
-                        <Label Height="5"/>
+                        <TextBox x:Name="TBoxSearch" />
+                            <Label Height="5"/>
                         <TextBlock Text="Поиск по типу" FontWeight="Bold"/>
                         <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"/>
                         <Label Height="5"/>
@@ -184,11 +184,17 @@
                         <Label Height="5"/>
 
                         <TextBlock Text="Поиск по режисеру" FontWeight="Bold"/>
-                        <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO">
+                        <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO"/>
+                            <Label Height="20"/>
+                            <Button Content="Button"/>
+                            <Label Height="20" />
+                            <Button Content="Button"/>
+                            <Label Height="20" />
+                            <Button Content="Button"/>
 
-                        </ComboBox>
 
-                    </StackPanel>
+
+                        </StackPanel>
                 </Grid>
             </TabItem.Content>
             </TabItem>

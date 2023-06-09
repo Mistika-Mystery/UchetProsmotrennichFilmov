@@ -26,17 +26,21 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class AddEddFilm : Window
     {
-        private BD.Films row = null;
+        private BD.Films row = new Films();
         private byte[] data = null;
-        public AddEddFilm()
-        {
-            InitializeComponent();
+        
+        //public AddEddFilm()
+        //{
+        //    InitializeComponent();
 
-        }
+        //}
         public AddEddFilm(Films films)
         {
             InitializeComponent();
-            row = films;
+            if (films != null)
+            {
+                row = films;
+            }
             DataContext = row;
             TxtName.Text = row.NameFilm;
             ComboOne.ItemsSource = BD.AppDB.db.Strany.ToList();
@@ -58,9 +62,8 @@ namespace UchetProsmotrennichFilmov.Pages
             fileOpen.Filter = "Image | *.png; *.jpg; *.jpeg";
             if (fileOpen.ShowDialog() == true)
             {
-                data = File.ReadAllBytes(fileOpen.FileName);
-                ImageSerice.Source = new ImageSourceConverter()
-                   .ConvertFrom(data) as ImageSource;
+                data = System.IO.File.ReadAllBytes(fileOpen.FileName);
+                ImageSerice.Source = new ImageSourceConverter().ConvertFrom(data) as ImageSource;
             }
         }
 
@@ -75,7 +78,9 @@ namespace UchetProsmotrennichFilmov.Pages
             if (string.IsNullOrWhiteSpace(TxtName2.Text))
                 errors.AppendLine("Введите время фильма");
             if (string.IsNullOrWhiteSpace(TxtName3.Text))
-                errors.AppendLine("Повторите описание фильма");
+                errors.AppendLine("Введите описание фильма");
+            if ((row.Ocenka)<1 || (row.Ocenka)>10)
+                errors.AppendLine("Рейтинг должен быть от 1 до 10");
             if (string.IsNullOrWhiteSpace(TxtName4.Text))
                 errors.AppendLine("Введите общий рейтинг");
 
@@ -84,21 +89,29 @@ namespace UchetProsmotrennichFilmov.Pages
                 MessageBox.Show(errors.ToString());
                 return;
             }
+
             if (row == null)
             {
-                var films = new Films();
-                
-                    films = new Films
-                    {
-                        NameFilm = TxtName.Text,
-                        IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.SelectedItem.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
-                        IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault(),
-                        IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault(),
-                        ImageFilm = data
-                    };
+                var kino = new Films();
+                //var stran = ComboOne.ItemsSource as Strany;
+                //var tip = ComboTwo.ItemsSource as Tip;
+                //var rezhis = ComboThr.ItemsSource as Rezhisers;
+                kino = new Films
+                {
+                    NameFilm = TxtName.Text,
+                    IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
+                    IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.ItemsSource.ToString()).Select(p => p.TipId).FirstOrDefault(),
+                    IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.ItemsSource.ToString()).Select(p => p.IdRezhiser).FirstOrDefault(),
+                    ImageFilm = data,
+                    TimeFilm = Convert.ToInt32(TxtName2.Text),
+                    GodFilma = Convert.ToInt32(TxtName1.Text),
+                    Opisanie = TxtName3.Text,
+                    Ocenka = Convert.ToInt32(TxtName4.Text),
+
+                };
             
 
-                AppDB.db.Films.Add(films);
+                AppDB.db.Films.Add(kino);
                 AppDB.db.SaveChanges();
                 MessageBox.Show("Фильм успешно добавлен", "Поздравляем!", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
@@ -106,14 +119,21 @@ namespace UchetProsmotrennichFilmov.Pages
             else
             {
                 row.NameFilm = TxtName.Text;
-                row.IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.SelectedItem.ToString()).Select(p => p.IdStrana).FirstOrDefault();
-                row.IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault();
-                row.IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault();
+                //row.IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault();
+                //row.IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault();
+                //row.IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault();
                 if (data != null)
+                {
                     row.ImageFilm = data;
+                }
+                row.TimeFilm = Convert.ToInt32(TxtName2.Text);
+                row.GodFilma = Convert.ToInt32(TxtName1.Text);
+                row.Opisanie = TxtName3.Text;
+                row.Ocenka = Convert.ToInt32(TxtName4.Text);
+
 
                 AppDB.db.SaveChanges();
-                MessageBox.Show("Фильм успешно добавлен", "Поздравляем!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Фильм успешно сохранен", "Поздравляем!", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
         }
