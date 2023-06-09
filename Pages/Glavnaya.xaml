@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0">
-            <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="24" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="Сменить пользователя" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
+            <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="26" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="Сменить пользователя" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Image/video_icon.png" Width="25"></Image>
                 <Label x:Name="TBdev" Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" FontFamily="Gill Sans Nova" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="TBdev_MouseLeftButtonDown"/>
@@ -35,6 +35,13 @@
 
         <TabControl Grid.Row="1" Grid.Column="1" Background="{x:Null}">
             <TabItem x:Name="h2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFAE8969" Offset="0.165"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                        <GradientStop Color="#FF675042" Offset="0.011"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Image/video_icon.png" VerticalAlignment="Center" Width="15"/>
@@ -43,13 +50,16 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
+                        <Grid.Background>
+                            <ImageBrush/>
+                        </Grid.Background>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="382*"/>
+                            <ColumnDefinition Width="95*"/>
 
                         </Grid.ColumnDefinitions>
 
-                        <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True" ToolTip="Отредактируй меня двойным щелчком">
+                        <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True" ToolTip="Отредактируй меня двойным щелчком" Grid.ColumnSpan="2" Margin="0,0,190,0">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
@@ -158,39 +168,86 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <StackPanel Grid.Column="1">
-                            <TextBlock Text="Поиск по названию и описанию" FontWeight="Bold"/>
-                            <TextBox x:Name="TBoxSearch" />
+                            <TextBlock Text="Поиск по названию и описанию" FontWeight="Bold">
+                                <TextBlock.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFDCC2B4" Offset="0.499"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.996"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.007"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Background></TextBlock>
+                            <TextBox x:Name="TBoxSearch" Height="21" />
                             <Label Height="5"/>
-                            <TextBlock Text="Поиск по типу" FontWeight="Bold"/>
-                            <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"/>
+                            <TextBlock Text="Поиск по типу" FontWeight="Bold">
+                                <TextBlock.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFDCC2B4" Offset="0.499"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.996"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.007"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Background></TextBlock>
+                            <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip" Cursor="Hand"/>
                             <Label Height="5"/>
 
-                            <TextBlock Text="Поиск по жанру" FontWeight="Bold"/>
-                            <ComboBox x:Name="CBJanr" SelectedItem="{Binding Janr}" DisplayMemberPath="NameJanr">
+                            <TextBlock Text="Поиск по жанру" FontWeight="Bold">
+                                <TextBlock.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFDCC2B4" Offset="0.499"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.996"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.007"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Background></TextBlock>
+                            <ComboBox x:Name="CBJanr" SelectedItem="{Binding Janr}" DisplayMemberPath="NameJanr" Cursor="Hand">
 
                             </ComboBox>
                             <Label Height="5"/>
 
-                            <TextBlock Text="Поиск по стране" FontWeight="Bold"/>
-                            <ComboBox x:Name="CBStrana" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana">
+                            <TextBlock Text="Поиск по стране" FontWeight="Bold">
+                                <TextBlock.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFDCC2B4" Offset="0.499"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.996"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.007"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Background></TextBlock>
+                            <ComboBox x:Name="CBStrana" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana" Cursor="Hand">
 
                             </ComboBox>
                             <Label Height="5"/>
 
-                            <TextBlock Text="Поиск по актеру" FontWeight="Bold"/>
-                            <ComboBox x:Name="CBactor" SelectedItem="{Binding Actors}" DisplayMemberPath="FIO">
+                            <TextBlock Text="Поиск по актеру" FontWeight="Bold">
+                                <TextBlock.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFE8CBBB" Offset="0.509"/>
+                                        <GradientStop Color="#FF8F8A87" Offset="1"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.011"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Background>
+                            </TextBlock>
+                            <ComboBox x:Name="CBactor" SelectedItem="{Binding Actors}" DisplayMemberPath="FIO" Cursor="Hand">
 
                             </ComboBox>
                             <Label Height="5"/>
 
-                            <TextBlock Text="Поиск по режисеру" FontWeight="Bold"/>
-                            <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO"/>
-                            <Label Height="30"/>
+                            <TextBlock Text="Поиск по режисеру" FontWeight="Bold">
+                                <TextBlock.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFDCC2B4" Offset="0.499"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.996"/>
+                                        <GradientStop Color="#FF978C86" Offset="0.007"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Background>
+                            </TextBlock>
+                            <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO" Cursor="Hand"/>
+                            <Label Height="15"/>
                             <Button Content="Сбросить \ Обновить" Cursor="Hand" FontWeight="Bold" FontSize="14" Height="35">
                                 <Button.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black"/>
-                                        <GradientStop Color="#FFF0D1C1" Offset="1"/>
+                                        <GradientStop Color="#FF161616"/>
+                                        <GradientStop Color="#FFF0D1C1" Offset="0.503"/>
+                                        <GradientStop Color="#FF313131" Offset="0.99"/>
+                                        <GradientStop Color="#FF7B6C65" Offset="0.798"/>
+                                        <GradientStop Color="#FF7D6C64" Offset="0.201"/>
                                     </LinearGradientBrush>
                                 </Button.Background>
                             </Button>
@@ -198,8 +255,11 @@
                             <Button Content="&lt;&lt; Добавить   " FontSize="14" FontWeight="Bold" Cursor="Hand" Height="35">
                                 <Button.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black"/>
-                                        <GradientStop Color="#FFF0D1C1" Offset="1"/>
+                                        <GradientStop Color="#FF2A2828"/>
+                                        <GradientStop Color="#FFF0D1C1" Offset="0.506"/>
+                                        <GradientStop Color="#FF2B2B2B" Offset="0.99"/>
+                                        <GradientStop Color="#FFA08B81" Offset="0.773"/>
+                                        <GradientStop Color="#FF8B7970" Offset="0.207"/>
                                     </LinearGradientBrush>
                                 </Button.Background>
                             </Button>
@@ -207,8 +267,11 @@
                             <Button Content="   Удалить &gt;&gt;" FontSize="14" FontWeight="Bold" Cursor="Hand" Height="35">
                                 <Button.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black" Offset="0"/>
-                                        <GradientStop Color="#FFF0D1C1" Offset="1"/>
+                                        <GradientStop Color="#FF1A1919" Offset="0"/>
+                                        <GradientStop Color="#FFF0D1C1" Offset="0.491"/>
+                                        <GradientStop Color="#FF181818" Offset="0.989"/>
+                                        <GradientStop Color="#FF927F75" Offset="0.242"/>
+                                        <GradientStop Color="#FF927F75" Offset="0.773"/>
                                     </LinearGradientBrush>
                                 </Button.Background>
                             </Button>
@@ -220,6 +283,13 @@
                 </TabItem.Content>
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFAE8969" Offset="0.165"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                        <GradientStop Color="#FF675042" Offset="0.011"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Image/izb.png" VerticalAlignment="Center" Width="15"/>
@@ -231,6 +301,13 @@
                 </TabItem.Content>
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFAE8969" Offset="0.165"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                        <GradientStop Color="#FF675042" Offset="0.011"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Image/prosmot.png" VerticalAlignment="Center" Width="15"/>
@@ -242,6 +319,13 @@
                 </TabItem.Content>
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFAE8969" Offset="0.165"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                        <GradientStop Color="#FF675042" Offset="0.011"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Image/attention.png" VerticalAlignment="Center" Width="15"/>
@@ -253,6 +337,13 @@
                 </TabItem.Content>
             </TabItem>
             <TabItem>
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFAE8969" Offset="0.165"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                        <GradientStop Color="#FF675042" Offset="0.011"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Image/glav1.png" VerticalAlignment="Center" Width="15"/>
@@ -263,7 +354,14 @@
                     <Label/>
                 </TabItem.Content>
             </TabItem>
-            <TabItem>
+            <TabItem HorizontalAlignment="Left" Margin="-2,-2,0,0" Width="77">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFAE8969" Offset="0.165"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                        <GradientStop Color="#FF675042" Offset="0.011"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Image/act.png" VerticalAlignment="Center" Width="15"/>
