@@ -208,12 +208,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Image\71-717747_gnome-view-refresh-refresh-arrow-icon-svg-clipart.png" />
-    <Resource Include="Image\0c55467729d8a17782b298b867bd22ee.png" />
-    <Resource Include="Image\REFRESH_26888.png" />
-    <Resource Include="Image\qwee.jpg" />
     <Resource Include="Image\act.png" />
-    <Resource Include="Image\rezh.png" />
     <Resource Include="Image\glav1.png" />
     <Resource Include="Image\izb.png" />
     <Resource Include="Image\attention.png" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,12 @@ namespace UchetProsmotrennichFilmov.Pages
         {
             var row = (sender as DataGridRow).DataContext as Films;
             AddEddFilm addEddFilm = new AddEddFilm(row);
+            addEddFilm.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddEddFilm addEddFilm = new AddEddFilm(null);
             addEddFilm.Show();
         }
     }
