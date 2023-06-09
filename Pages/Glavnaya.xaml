@@ -22,17 +22,17 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-  
+
         <StackPanel VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0">
             <Label x:Name="TxtLogo" Grid.Column="1" Content="Учет Просмотренных Фильмов" FontSize="24" FontWeight="Black" FontFamily="Gill Sans Nova Ultra Bold" ToolTip="Сменить пользователя" MouseLeftButtonDown="TxtLogo_MouseLeftButtonDown"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Image/video_icon.png" Width="25"></Image>
-            <Label x:Name="TBdev" Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" FontFamily="Gill Sans Nova" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="TBdev_MouseLeftButtonDown"/>
+                <Label x:Name="TBdev" Grid.Column="1" Content="Ваш Персональный Помошник В Мире Кино" FontFamily="Gill Sans Nova" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" MouseLeftButtonDown="TBdev_MouseLeftButtonDown"/>
                 <Image Source="/Image/video_icon.png" Width="25"></Image>
             </StackPanel>
         </StackPanel>
 
-     
+
         <TabControl Grid.Row="1" Grid.Column="1" Background="{x:Null}">
             <TabItem x:Name="h2">
                 <TabItem.Header>
@@ -41,162 +41,183 @@
                         <TextBlock Margin="3">Каталог</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
-            <TabItem.Content>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="*"/>
-                        
-                    </Grid.ColumnDefinitions>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
 
-                    <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True" ToolTip="Отредактируй меня двойным щелчком">
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid x:Name="KatalogGrid" AutoGenerateColumns="False" IsReadOnly="True" ToolTip="Отредактируй меня двойным щелчком">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
                                 </Style>
                             </DataGrid.Resources>
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="150"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
 
-                                            </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                        <Image  
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Image  
                                     Source="{Binding ImageFilm}" 
                                     Grid.Column="0" 
                                     Grid.Row="0" 
                                     Grid.RowSpan="6" MaxWidth="150" MaxHeight="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                                        <StackPanel 
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="0" 
                                     Grid.Column="1">
-                                            
-                                            <TextBlock Text="{Binding NameFilm}" FontWeight="Bold" FontSize="16" TextDecorations="Underline"/>
 
-                                        </StackPanel>
-                                        <StackPanel 
+                                                    <TextBlock Text="{Binding NameFilm}" FontWeight="Bold" FontSize="16" TextDecorations="Underline"/>
+
+                                                </StackPanel>
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="1" 
                                     Grid.Column="1">
-                                            <TextBlock Text="Страна: "/>
-                                            <TextBlock Text="{Binding Strany.NameStrana}" FontWeight="Bold"/>
+                                                    <TextBlock Text="Страна: "/>
+                                                    <TextBlock Text="{Binding Strany.NameStrana}" FontWeight="Bold"/>
 
-                                        </StackPanel>
-                                        <StackPanel 
+                                                </StackPanel>
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="2" 
                                     Grid.Column="1">
-                                            <TextBlock Text="год: "/>
-                                            <TextBlock Text="{Binding GodFilma }" FontWeight="Bold"/>
+                                                    <TextBlock Text="год: "/>
+                                                    <TextBlock Text="{Binding GodFilma }" FontWeight="Bold"/>
 
-                                        </StackPanel>
-                                        <StackPanel 
+                                                </StackPanel>
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="3" 
                                     Grid.Column="1">
-                                            <TextBlock Text="Продолжительность: "/>
-                                            <TextBlock Text="{Binding TimeFilm}" FontWeight="Bold"/>
-                                            <TextBlock Text=" мин."/>
-                                        </StackPanel>
-                                        <StackPanel 
+                                                    <TextBlock Text="Продолжительность: "/>
+                                                    <TextBlock Text="{Binding TimeFilm}" FontWeight="Bold"/>
+                                                    <TextBlock Text=" мин."/>
+                                                </StackPanel>
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="4" 
                                     Grid.Column="1">
-                                            <TextBlock Text="Режиссер: "/>
-                                            <TextBlock Text="{Binding Rezhisers.FIO}" FontWeight="Bold"/>
+                                                    <TextBlock Text="Режиссер: "/>
+                                                    <TextBlock Text="{Binding Rezhisers.FIO}" FontWeight="Bold"/>
 
-                                        </StackPanel>
-                                         <StackPanel 
+                                                </StackPanel>
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="5" 
                                     Grid.Column="1">
-                                                <TextBlock Text="Рейтинг: "/>
-                                                <TextBlock Text="{Binding Ocenka}" FontWeight="Bold"/>
+                                                    <TextBlock Text="Рейтинг: "/>
+                                                    <TextBlock Text="{Binding Ocenka}" FontWeight="Bold"/>
 
-                                          </StackPanel>
-                                            <StackPanel 
+                                                </StackPanel>
+                                                <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="6" 
                                     Grid.Column="1">
-                                                <TextBlock Text="Отметить как: " FontWeight="Bold"/>
-                                                <Label Width="30" />
-                                                <Image x:Name="ImgIzbr" ToolTip="Добавить в Избранное" Source="/Image/izb.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Cursor="Hand"/>
-                                                <Label Width="30" />
-                                                <Image x:Name="ImgProsmotr" ToolTip="Просмотренно" Source="/Image/prosmot.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Cursor="Hand"/>
-                                                <Label Width="30" />
-                                                <Image x:Name="ImgHochu" ToolTip="Хочу Посмотреть" Source="/Image/attention.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Cursor="Hand"/>
+                                                    <TextBlock Text="Отметить как: " FontWeight="Bold"/>
+                                                    <Label Width="30" />
+                                                    <Image x:Name="ImgIzbr" ToolTip="Добавить в Избранное" Source="/Image/izb.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Cursor="Hand"/>
+                                                    <Label Width="30" />
+                                                    <Image x:Name="ImgProsmotr" ToolTip="Просмотренно" Source="/Image/prosmot.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Cursor="Hand"/>
+                                                    <Label Width="30" />
+                                                    <Image x:Name="ImgHochu" ToolTip="Хочу Посмотреть" Source="/Image/attention.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="35" Cursor="Hand"/>
 
 
 
-                                            </StackPanel>
+                                                </StackPanel>
 
 
-                                            <TextBlock Text="Описание: " Grid.Column="2" Grid.RowSpan="1"/>
-                                            <TextBox TextWrapping="Wrap" Text="{Binding Opisanie}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" FontWeight="Bold" />
+                                                <TextBlock Text="Описание: " Grid.Column="2" Grid.RowSpan="1"/>
+                                                <TextBox TextWrapping="Wrap" Text="{Binding Opisanie}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" FontWeight="Bold" />
 
-                                            
 
-                                        </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                    <StackPanel Grid.Column="1">
-                        <TextBlock Text="Поиск по названию и описанию" FontWeight="Bold"/>
-                        <TextBox x:Name="TBoxSearch" />
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Поиск по названию и описанию" FontWeight="Bold"/>
+                            <TextBox x:Name="TBoxSearch" />
                             <Label Height="5"/>
-                        <TextBlock Text="Поиск по типу" FontWeight="Bold"/>
-                        <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"/>
-                        <Label Height="5"/>
-                        
-                        <TextBlock Text="Поиск по жанру" FontWeight="Bold"/>
-                        <ComboBox x:Name="CBJanr" SelectedItem="{Binding Janr}" DisplayMemberPath="NameJanr">
-                      
-                        </ComboBox>
-                        <Label Height="5"/>
+                            <TextBlock Text="Поиск по типу" FontWeight="Bold"/>
+                            <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip"/>
+                            <Label Height="5"/>
 
-                        <TextBlock Text="Поиск по стране" FontWeight="Bold"/>
-                        <ComboBox x:Name="CBStrana" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana">
-                          
-                        </ComboBox>
-                        <Label Height="5"/>
+                            <TextBlock Text="Поиск по жанру" FontWeight="Bold"/>
+                            <ComboBox x:Name="CBJanr" SelectedItem="{Binding Janr}" DisplayMemberPath="NameJanr">
 
-                        <TextBlock Text="Поиск по актеру" FontWeight="Bold"/>
-                        <ComboBox x:Name="CBactor" SelectedItem="{Binding Actors}" DisplayMemberPath="FIO">
-                       
-                        </ComboBox>
-                        <Label Height="5"/>
+                            </ComboBox>
+                            <Label Height="5"/>
 
-                        <TextBlock Text="Поиск по режисеру" FontWeight="Bold"/>
-                        <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO"/>
-                            <Label Height="20"/>
-                            <Button Content="Button"/>
-                            <Label Height="20" />
-                            <Button Content="Button"/>
-                            <Label Height="20" />
-                            <Button Content="Button"/>
+                            <TextBlock Text="Поиск по стране" FontWeight="Bold"/>
+                            <ComboBox x:Name="CBStrana" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana">
+
+                            </ComboBox>
+                            <Label Height="5"/>
+
+                            <TextBlock Text="Поиск по актеру" FontWeight="Bold"/>
+                            <ComboBox x:Name="CBactor" SelectedItem="{Binding Actors}" DisplayMemberPath="FIO">
+
+                            </ComboBox>
+                            <Label Height="5"/>
+
+                            <TextBlock Text="Поиск по режисеру" FontWeight="Bold"/>
+                            <ComboBox x:Name="CBRezhis" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO"/>
+                            <Label Height="30"/>
+                            <Button Content="Сбросить \ Обновить" Cursor="Hand" FontWeight="Bold" FontSize="14" Height="35">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black"/>
+                                        <GradientStop Color="#FFF0D1C1" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Label Height="10" />
+                            <Button Content="&lt;&lt; Добавить   " FontSize="14" FontWeight="Bold" Cursor="Hand" Height="35">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black"/>
+                                        <GradientStop Color="#FFF0D1C1" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Label Height="10" />
+                            <Button Content="   Удалить &gt;&gt;" FontSize="14" FontWeight="Bold" Cursor="Hand" Height="35">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="#FFF0D1C1" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
 
 
 
                         </StackPanel>
-                </Grid>
-            </TabItem.Content>
+                    </Grid>
+                </TabItem.Content>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -255,7 +276,7 @@
             </TabItem>
 
 
-           
+
         </TabControl>
     </Grid>
 </Window>
