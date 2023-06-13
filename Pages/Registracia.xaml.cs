@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using UchetProsmotrennichFilmov.BD;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Text.RegularExpressions;
+using System.Windows;
+using UchetProsmotrennichFilmov.BD;
 
 namespace UchetProsmotrennichFilmov.Pages
 {
@@ -44,20 +32,20 @@ namespace UchetProsmotrennichFilmov.Pages
         {
             StringBuilder errors = new StringBuilder();
             if (string.IsNullOrWhiteSpace(_currenUser.Login))
-            errors.AppendLine("Введите Логин");
+                errors.AppendLine("Введите Логин");
             if (string.IsNullOrWhiteSpace(_currenUser.Pass))
-             errors.AppendLine("Введите Пароль");
+                errors.AppendLine("Введите Пароль");
             if (string.IsNullOrWhiteSpace(_currenUser.Pass2))
-            errors.AppendLine("Повторите Пароль");
+                errors.AppendLine("Повторите Пароль");
             if (string.IsNullOrWhiteSpace(_currenUser.Email))
-            errors.AppendLine("Введите e-mail");
+                errors.AppendLine("Введите e-mail");
 
             if (errors.Length > 0)
-            {   
+            {
                 MessageBox.Show(errors.ToString());
                 return;
             }
-            
+
             var Email = AppDB.db.Users.FirstOrDefault(x => x.Email == _currenUser.Email.ToString());
             if (Email != null)
             {
@@ -97,7 +85,7 @@ namespace UchetProsmotrennichFilmov.Pages
             }
 
 
-            else if (Log == null || Email == null ||  _currenUser.IdUser == 0)
+            else if (Log == null || Email == null || _currenUser.IdUser == 0)
             {
 
                 _currenUser.RolId = 2;

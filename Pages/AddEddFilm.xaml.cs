@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UchetProsmotrennichFilmov.BD;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using Microsoft.Win32;
-using System.IO;
-using System.Windows.Navigation;
-using static System.Net.WebRequestMethods;
 
 namespace UchetProsmotrennichFilmov.Pages
 {
@@ -32,7 +20,7 @@ namespace UchetProsmotrennichFilmov.Pages
         //public AddEddFilm()
         //{
         //    InitializeComponent();
-         
+
         //}
         public AddEddFilm(Films films)
         {
@@ -73,13 +61,13 @@ namespace UchetProsmotrennichFilmov.Pages
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
-            
-            if (string.IsNullOrWhiteSpace(row.NameFilm))errors.AppendLine("Введите Название фильма");
-            if (string.IsNullOrWhiteSpace(row.Opisanie))errors.AppendLine("Введите описание фильма");
-            if (row.GodFilma == null)errors.AppendLine("Введите год фильма");
-            if (row.Ocenka == null)errors.AppendLine("Введите общий рейтинг фильма");
-            if ((row.Ocenka)<0 || (row.Ocenka)>10)errors.AppendLine("Рейтинг должен быть от 1 до 10");
-            if (row.TimeFilm == null )errors.AppendLine("Введите продолжительность фильма");
+
+            if (string.IsNullOrWhiteSpace(row.NameFilm)) errors.AppendLine("Введите Название фильма");
+            if (string.IsNullOrWhiteSpace(row.Opisanie)) errors.AppendLine("Введите описание фильма");
+            if (row.GodFilma == null) errors.AppendLine("Введите год фильма");
+            if (row.Ocenka == null) errors.AppendLine("Введите общий рейтинг фильма");
+            if ((row.Ocenka) < 0 || (row.Ocenka) > 10) errors.AppendLine("Рейтинг должен быть от 1 до 10");
+            if (row.TimeFilm == null) errors.AppendLine("Введите продолжительность фильма");
 
             if (errors.Length > 0)
             {
@@ -88,14 +76,14 @@ namespace UchetProsmotrennichFilmov.Pages
             }
 
             //if (row == null)
-            if(row.IdFilm == 0)
+            if (row.IdFilm == 0)
             {
                 //var films = new Films();
                 var stran = ComboOne.SelectedItem as Strany;
                 var tip = ComboTwo.SelectedItem as Tip;
                 var rezhis = ComboThr.SelectedItem as Rezhisers;
 
-                var films = new BD.Films 
+                var films = new BD.Films
                 {
                     NameFilm = TxtName.Text,
                     IdStrana = stran.IdStrana,
@@ -111,10 +99,10 @@ namespace UchetProsmotrennichFilmov.Pages
                     //IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
                     //IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault(),
                     //IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault()
-                
+
 
                 };
-            
+
 
                 AppDB.db.Films.Add(films);
                 AppDB.db.SaveChanges();
@@ -142,7 +130,7 @@ namespace UchetProsmotrennichFilmov.Pages
                 this.Close();
             }
         }
-    
+
 
 
 
@@ -161,7 +149,7 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (Visibility== Visibility.Collapsed)
+            if (Visibility == Visibility.Collapsed)
             {
                 AppDB.db.Films.Load();
             }

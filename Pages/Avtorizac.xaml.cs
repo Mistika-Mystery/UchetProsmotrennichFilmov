@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UchetProsmotrennichFilmov.BD;
 
 namespace UchetProsmotrennichFilmov.Pages
@@ -22,11 +11,11 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class Avtorizac : Page
     {
-       
+
         public Avtorizac()
         {
             InitializeComponent();
-          
+
         }
 
         private void BtnVhod_Click(object sender, RoutedEventArgs e)
@@ -44,7 +33,7 @@ namespace UchetProsmotrennichFilmov.Pages
             }
 
             var Log = BD.AppDB.db.Users.FirstOrDefault(x => x.Login == TBLogo.Text && x.Pass == PBPass.Password.ToString());
-            
+
             if (Log != null)
             {
                 AppDB.CurrentUser = Log;
@@ -53,7 +42,7 @@ namespace UchetProsmotrennichFilmov.Pages
                 glavnaya.Show();
                 Window.GetWindow(this).Close();
             }
-                
+
             else
             {
                 MessageBox.Show("Такого пользователя \n      не существует\nПопробуйте еще раз\n           ИЛИ\nЗарегестрируйтесь");
@@ -62,10 +51,10 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void BtnReg_Click(object sender, RoutedEventArgs e)
         {
-            Registracia registracia= new Registracia();
+            Registracia registracia = new Registracia();
             registracia.Show();
-            
-            
+
+
         }
     }
 }

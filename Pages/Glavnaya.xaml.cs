@@ -62,14 +62,14 @@ namespace UchetProsmotrennichFilmov.Pages
             addEddFilm.Show();
         }
 
-        
-            private void Button_Click_1(object sender, RoutedEventArgs e)
-            {
-                AppDB.db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                KatalogGrid.ItemsSource = AppDB.db.Films.ToList();
-            }
 
-       
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AppDB.db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            KatalogGrid.ItemsSource = AppDB.db.Films.ToList();
+        }
+
+
 
         private void ButtonSave(object sender, RoutedEventArgs e)
         {
@@ -90,5 +90,5 @@ namespace UchetProsmotrennichFilmov.Pages
             }
         }
     }
-    }
+}
 
