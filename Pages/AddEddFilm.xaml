@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UchetProsmotrennichFilmov.Pages"
         mc:Ignorable="d"
-        Title="Учет Просмотренных Фильмов" Height="450" Width="550" Icon="/Image/video_icon.png" MinWidth="500" MinHeight="400" WindowStyle="None">
+        Title="Учет Просмотренных Фильмов" Height="450" Width="550" Icon="/Image/video_icon.png" MinWidth="500" MinHeight="400" WindowStyle="None" IsVisibleChanged="Window_IsVisibleChanged">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Image/fon3.jpg"/>
@@ -26,7 +26,7 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2">
             
                 <TextBlock  Text="Название: " HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
-            <TextBox Name="TxtName" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ></TextBox>
+            <TextBox Name="TxtName" Text="{Binding NameFilm}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ></TextBox>
                 <TextBlock  Text="Страна: " FontWeight="Bold"></TextBlock>
             <ComboBox Name="ComboOne" SelectedItem="{Binding Strany}" DisplayMemberPath="NameStrana"></ComboBox>
                 <TextBlock Text="Тип: " FontWeight="Bold"></TextBlock>
@@ -34,11 +34,11 @@
             <TextBlock  Text="Режиссер: " FontWeight="Bold"></TextBlock>
             <ComboBox Name="ComboThr" SelectedItem="{Binding Rezhisers}" DisplayMemberPath="FIO"></ComboBox>
                 <TextBlock  Text="Год: " FontWeight="Bold"></TextBlock>
-            <TextBox Name="TxtName1" ></TextBox>
+            <TextBox Name="TxtName1" Text="{Binding GodFilma}" ></TextBox>
             <TextBlock  Text="Длительность в мин: " FontWeight="Bold"></TextBlock>
-            <TextBox Name="TxtName2" ></TextBox>
+            <TextBox Name="TxtName2" Text="{Binding TimeFilm}" ></TextBox>
             <TextBlock  Text="Рейтинг: " FontWeight="Bold"></TextBlock>
-            <TextBox Name="TxtName4" TextWrapping="Wrap"></TextBox>
+            <TextBox Name="TxtName4" Text="{Binding Ocenka}" TextWrapping="Wrap"></TextBox>
 
             </StackPanel>
        
@@ -47,9 +47,9 @@
         <StackPanel Grid.Column="3" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock  Text="Описание: " FontWeight="Bold"></TextBlock>
-                <TextBox Name="TxtName3" TextWrapping="Wrap"></TextBox>
+                <TextBox Name="TxtName3" Text="{Binding Opisanie}" TextWrapping="Wrap"></TextBox>
                 <Border Margin="5" Width="150"  BorderThickness="1">
-                    <Image x:Name="ImageSerice"/>
+                    <Image x:Name="ImageSerice" />
                 </Border>
                 <Button Height="30" Width="150" Margin="5" Name="SelectImageBtn" Click="SelectImageBtn_Click" Content="Выбрать фотографию" FontWeight="Bold" Cursor="Hand"/>
                 

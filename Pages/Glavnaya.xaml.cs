@@ -1,4 +1,4 @@
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+﻿using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,10 +62,33 @@ namespace UchetProsmotrennichFilmov.Pages
             addEddFilm.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+            private void Button_Click_1(object sender, RoutedEventArgs e)
+            {
+                AppDB.db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                KatalogGrid.ItemsSource = AppDB.db.Films.ToList();
+            }
+
+       
+
+        private void ButtonSave(object sender, RoutedEventArgs e)
         {
             AddEddFilm addEddFilm = new AddEddFilm(null);
             addEddFilm.Show();
         }
+
+        private void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+            var delFilm = KatalogGrid.SelectedItems.Cast<Films>().ToList();
+
+            if (MessageBox.Show($"Вы дейстиветльно хотите удалить эти {delFilm.Count()} элемента!?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+
+            {
+                AppDB.db.Films.RemoveRange(delFilm);
+                AppDB.db.SaveChanges();
+                //UpdatePotion();
+            }
+        }
     }
-}
+    }
+

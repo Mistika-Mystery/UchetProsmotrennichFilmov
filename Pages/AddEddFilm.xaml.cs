@@ -26,14 +26,14 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class AddEddFilm : Window
     {
-        private BD.Films row = new Films();
+        private Films row = new Films();
         private byte[] data = null;
 
-        public AddEddFilm()
-        {
-            InitializeComponent();
+        //public AddEddFilm()
+        //{
+        //    InitializeComponent();
          
-        }
+        //}
         public AddEddFilm(Films films)
         {
             InitializeComponent();
@@ -41,15 +41,18 @@ namespace UchetProsmotrennichFilmov.Pages
             {
                 row = films;
             }
+
+            AppDB.db = new UchetFilmofEntities();
             DataContext = row;
-            TxtName.Text = row.NameFilm;
+            //TxtName.Text = row.NameFilm;
             ComboOne.ItemsSource = BD.AppDB.db.Strany.ToList();
             ComboTwo.ItemsSource = BD.AppDB.db.Tip.ToList();
             ComboThr.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
-            TxtName1.Text = row.GodFilma.ToString();
-            TxtName2.Text = row.TimeFilm.ToString();
-            TxtName3.Text = row.Opisanie;
-            TxtName4.Text = row.Ocenka.ToString();
+
+            //TxtName1.Text = row.GodFilma.ToString();
+            //TxtName2.Text = row.TimeFilm.ToString();
+            //TxtName3.Text = row.Opisanie;
+            //TxtName4.Text = row.Ocenka.ToString();
 
             if (row.ImageFilm != null) ImageSerice.Source = new ImageSourceConverter().ConvertFrom(row.ImageFilm) as ImageSource;
 
@@ -71,18 +74,12 @@ namespace UchetProsmotrennichFilmov.Pages
         {
             StringBuilder errors = new StringBuilder();
             
-            if (string.IsNullOrWhiteSpace(TxtName.Text))
-                errors.AppendLine("Введите Название фильма");
-            if (string.IsNullOrWhiteSpace(TxtName1.Text))
-                errors.AppendLine("Введите год фильма");
-            if (string.IsNullOrWhiteSpace(TxtName2.Text))
-                errors.AppendLine("Введите время фильма");
-            if (string.IsNullOrWhiteSpace(TxtName3.Text))
-                errors.AppendLine("Введите описание фильма");
-            if ((row.Ocenka)<0 || (row.Ocenka)>10)
-                errors.AppendLine("Рейтинг должен быть от 1 до 10");
-            if (string.IsNullOrWhiteSpace(TxtName4.Text))
-                errors.AppendLine("Введите общий рейтинг");
+            if (string.IsNullOrWhiteSpace(row.NameFilm))errors.AppendLine("Введите Название фильма");
+            if (string.IsNullOrWhiteSpace(row.Opisanie))errors.AppendLine("Введите описание фильма");
+            if (row.GodFilma == null)errors.AppendLine("Введите год фильма");
+            if (row.Ocenka == null)errors.AppendLine("Введите общий рейтинг фильма");
+            if ((row.Ocenka)<0 || (row.Ocenka)>10)errors.AppendLine("Рейтинг должен быть от 1 до 10");
+            if (row.TimeFilm == null )errors.AppendLine("Введите продолжительность фильма");
 
             if (errors.Length > 0)
             {
@@ -90,28 +87,30 @@ namespace UchetProsmotrennichFilmov.Pages
                 return;
             }
 
-            if (row == null)
+            //if (row == null)
+            if(row.IdFilm == 0)
             {
-                var films = new Films();
-                //var stran = ComboOne.ItemsSource as Strany;
-                //var tip = ComboTwo.ItemsSource as Tip;
-                //var rezhis = ComboThr.ItemsSource as Rezhisers;
-                
-                films = new BD.Films 
+                //var films = new Films();
+                var stran = ComboOne.SelectedItem as Strany;
+                var tip = ComboTwo.SelectedItem as Tip;
+                var rezhis = ComboThr.SelectedItem as Rezhisers;
+
+                var films = new BD.Films 
                 {
                     NameFilm = TxtName.Text,
-                    //IdStrana = stran.IdStrana,
-                    //IdTip = tip.TipId,
-                    //IdRezhiser = rezhis.IdRezhiser,
+                    IdStrana = stran.IdStrana,
+                    IdTip = tip.TipId,
+                    IdRezhiser = rezhis.IdRezhiser,
                     ImageFilm = data,
                     TimeFilm = Convert.ToInt32(TxtName2.Text),
                     GodFilma = Convert.ToInt32(TxtName1.Text),
                     Opisanie = TxtName3.Text,
                     Ocenka = Convert.ToInt32(TxtName4.Text),
+                    IdUser = 2
                     //IdUser = AppDB.CurrentUser.IdUser,
-                    IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
-                    IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault(),
-                    IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault()
+                    //IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
+                    //IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault(),
+                    //IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault()
                 
 
                 };
@@ -157,6 +156,14 @@ namespace UchetProsmotrennichFilmov.Pages
                 "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility== Visibility.Collapsed)
+            {
+                AppDB.db.Films.Load();
             }
         }
     }
