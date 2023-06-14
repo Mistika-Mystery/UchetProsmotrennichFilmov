@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using UchetProsmotrennichFilmov.BD;
 
 namespace UchetProsmotrennichFilmov.Pages
@@ -63,32 +64,155 @@ namespace UchetProsmotrennichFilmov.Pages
         }
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AppDB.db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-            KatalogGrid.ItemsSource = AppDB.db.Films.ToList();
-        }
 
-
-
-        private void ButtonSave(object sender, RoutedEventArgs e)
-        {
-            AddEddFilm addEddFilm = new AddEddFilm(null);
-            addEddFilm.Show();
-        }
+ 
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
             var delFilm = KatalogGrid.SelectedItems.Cast<Films>().ToList();
 
-            if (MessageBox.Show($"Вы дейстиветльно хотите удалить эти {delFilm.Count()} элемента!?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Вы дейстиветльно хотите удалить фильмов: {delFilm.Count()} шт!?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 
             {
                 AppDB.db.Films.RemoveRange(delFilm);
                 AppDB.db.SaveChanges();
-                //UpdatePotion();
+                UpdFilm();
             }
         }
+
+        private void BtnReload_Click(object sender, RoutedEventArgs e)
+        {
+            sortBox.SelectedIndex = -1;
+
+            
+            CBTip.SelectedIndex = -1;
+
+           
+
+        }
+
+        private void Glavnoe_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdFilm();
+        }
+
+
+        private void UpdFilm()
+        {
+            var Upfilm = AppDB.db.Films.ToList();
+            KatalogGrid.ItemsSource = Upfilm;
+        }
+
+        private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
+        {
+            AddEddFilm addEddFilm = new AddEddFilm(null);
+            addEddFilm.Show();
+        }
+
+        private void Glavnoe_Activated(object sender, System.EventArgs e)
+        {
+            UpdFilm();
+        }
+
+
+        private void sortBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CBTip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CBJanr_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CBStrana_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CBactor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void CBRezhis_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TBoxSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TBoxSearch.Visibility = Visibility.Collapsed;
+            SeactWater.Visibility = Visibility.Visible;
+            SeactWater.Focus();
+        }
+
+        private void SeactWater_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(SeactWater.Text))
+            {
+                SeactWater.Visibility = Visibility.Collapsed;
+                TBoxSearch.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void SeactWater_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+
+        //private void Seach_Filter_Films(string search = "", string sort = "По имени, от А до Я", string filter = "Все породы")
+        //{
+
+        //   // var materialList = DB.AppData.db.kotiki.ToList();
+        //    var filmpoisk = AppDB.db.Films.ToList();
+        //    switch (sort)
+        //    {
+        //        //наименование, остаток на складе и стоимость 
+
+        //        case "По имени, от А до Я":
+        //            materialList = materialList.OrderByDescending(s => s.name).ToList();
+        //            break;
+        //        case "По имени, от Я до А":
+        //            materialList = materialList.OrderBy(s => s.name).ToList();
+
+        //            break;
+        //        case "Вначале моложе":
+        //            materialList = materialList.OrderBy(s => s.dr).ToList();
+        //            break;
+        //        case "Вначале старее":
+        //            materialList = materialList.OrderByDescending(s => s.dr).ToList();
+        //            break;
+        //        case "По убыванию цены":
+        //            materialList = materialList.OrderBy(s => s.price).ToList();
+        //            break;
+        //        case "По возрастанию цены":
+        //            materialList = materialList.OrderByDescending(s => s.price).ToList();
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //    if (!string.IsNullOrEmpty(search) || !string.IsNullOrWhiteSpace(search))
+        //    {
+        //        //по наименованию и описанию материала 
+
+        //        materialList = materialList.Where(s => s.name.ToLower().Contains(search.ToLower())
+        //        || (s.poroda ?? "").ToLower().Contains(search.ToLower())).ToList();
+        //    }
+        //    if (filter != "Все породы")
+        //    {
+        //        materialList = materialList.Where(s => s.poroda.ToLower().Contains(filter.ToLower())).ToList();
+        //    }
+        //    materialsGrid.ItemsSource = materialList;
+        //}
     }
 }
 

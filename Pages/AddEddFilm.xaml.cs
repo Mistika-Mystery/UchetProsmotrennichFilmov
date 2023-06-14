@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using UchetProsmotrennichFilmov.BD;
+using System.Text.RegularExpressions;
 
 namespace UchetProsmotrennichFilmov.Pages
 {
@@ -16,12 +17,9 @@ namespace UchetProsmotrennichFilmov.Pages
     {
         private Films row = new Films();
         private byte[] data = null;
+        Regex regex = new Regex(@"^[0-9]+$");
+        MatchCollection match;
 
-        //public AddEddFilm()
-        //{
-        //    InitializeComponent();
-
-        //}
         public AddEddFilm(Films films)
         {
             InitializeComponent();
@@ -32,15 +30,11 @@ namespace UchetProsmotrennichFilmov.Pages
 
             AppDB.db = new UchetFilmofEntities();
             DataContext = row;
-            //TxtName.Text = row.NameFilm;
+       
             ComboOne.ItemsSource = BD.AppDB.db.Strany.ToList();
             ComboTwo.ItemsSource = BD.AppDB.db.Tip.ToList();
             ComboThr.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
 
-            //TxtName1.Text = row.GodFilma.ToString();
-            //TxtName2.Text = row.TimeFilm.ToString();
-            //TxtName3.Text = row.Opisanie;
-            //TxtName4.Text = row.Ocenka.ToString();
 
             if (row.ImageFilm != null) ImageSerice.Source = new ImageSourceConverter().ConvertFrom(row.ImageFilm) as ImageSource;
 
@@ -65,9 +59,15 @@ namespace UchetProsmotrennichFilmov.Pages
             if (string.IsNullOrWhiteSpace(row.NameFilm)) errors.AppendLine("Введите Название фильма");
             if (string.IsNullOrWhiteSpace(row.Opisanie)) errors.AppendLine("Введите описание фильма");
             if (row.GodFilma == null) errors.AppendLine("Введите год фильма");
+            match = regex.Matches(TxtName1.Text);
+            if (match.Count == 0) errors.AppendLine("Год: Только цифры!");
             if (row.Ocenka == null) errors.AppendLine("Введите общий рейтинг фильма");
+            match = regex.Matches(TxtName2.Text);
+            if (match.Count == 0) errors.AppendLine("Длительность: Только цифры!");
             if ((row.Ocenka) < 0 || (row.Ocenka) > 10) errors.AppendLine("Рейтинг должен быть от 1 до 10");
             if (row.TimeFilm == null) errors.AppendLine("Введите продолжительность фильма");
+            match = regex.Matches(TxtName4.Text);
+            if (match.Count == 0) errors.AppendLine("Рейтинг: Только цифры!");
 
             if (errors.Length > 0)
             {
@@ -75,10 +75,10 @@ namespace UchetProsmotrennichFilmov.Pages
                 return;
             }
 
-            //if (row == null)
+          
             if (row.IdFilm == 0)
             {
-                //var films = new Films();
+           
                 var stran = ComboOne.SelectedItem as Strany;
                 var tip = ComboTwo.SelectedItem as Tip;
                 var rezhis = ComboThr.SelectedItem as Rezhisers;
@@ -95,10 +95,7 @@ namespace UchetProsmotrennichFilmov.Pages
                     Opisanie = TxtName3.Text,
                     Ocenka = Convert.ToInt32(TxtName4.Text),
                     IdUser = 2
-                    //IdUser = AppDB.CurrentUser.IdUser,
-                    //IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault(),
-                    //IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault(),
-                    //IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault()
+     
 
 
                 };
@@ -112,9 +109,6 @@ namespace UchetProsmotrennichFilmov.Pages
             else
             {
                 row.NameFilm = TxtName.Text;
-                //row.IdStrana = AppDB.db.Strany.Where(p => p.NameStrana == ComboOne.ItemsSource.ToString()).Select(p => p.IdStrana).FirstOrDefault();
-                //row.IdTip = AppDB.db.Tip.Where(p => p.NameTip == ComboTwo.SelectedItem.ToString()).Select(p => p.TipId).FirstOrDefault();
-                //row.IdRezhiser = AppDB.db.Rezhisers.Where(p => p.FIO == ComboThr.SelectedItem.ToString()).Select(p => p.IdRezhiser).FirstOrDefault();
                 if (data != null)
                 {
                     row.ImageFilm = data;
@@ -147,12 +141,6 @@ namespace UchetProsmotrennichFilmov.Pages
             }
         }
 
-        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (Visibility == Visibility.Collapsed)
-            {
-                AppDB.db.Films.Load();
-            }
-        }
+       
     }
 }
