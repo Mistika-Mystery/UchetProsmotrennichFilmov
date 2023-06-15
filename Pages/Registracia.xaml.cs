@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using UchetProsmotrennichFilmov.BD;
 
+
 namespace UchetProsmotrennichFilmov.Pages
 {
     /// <summary>
@@ -12,6 +13,7 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class Registracia : Window
     {
+        
         private Users _currenUser = new Users();
         public Registracia()
         {
@@ -61,22 +63,26 @@ namespace UchetProsmotrennichFilmov.Pages
             {
                 errors.AppendLine("Пароли не совпадают!");
             }
-            if (!_currenUser.Email.Contains("@"))
+            if (IsLoginAllowed(tblogin.Text.Trim()) == false)
             {
-                errors.AppendLine("Не верный формат почты");
+                errors.AppendLine("Не верный формат Логина: Минимум 4 символа: только: цифры, кирилица, латиница, нижнее подчеркивание. Максимум символов: 50 ");
             }
             if (_currenUser.DR == DateTime.Today || _currenUser.DR > DateTime.Today || _currenUser.DR == null || _currenUser.DR < tbdr.DisplayDateStart)
             {
                 errors.AppendLine("Неправильно введена дата рождения");
             }
+            if (tbemail.Text.Length > 50 || tbemail.Text.Length < 8)
+            {
+                errors.AppendLine("Не верный формат почты: Минимум символов: 8. Максимум символов: 50");
+            }
 
-            if (IsEmailAllowed(tblogin.Text.Trim()) == false)
+                if (IsEmailAllowed(tbemail.Text.Trim()) == false)
             {
                 errors.AppendLine("Не верный формат почты: англ буквы + @ + англ буквы + точка + англ буквы");
             }
             if (IsPasswordAllowed(tbpass1.Text.Trim()) == false)
             {
-                errors.AppendLine("Пароль должен содеражать: минимум 8 символов, цифры, заглавные и строчные буквы латиницы");
+                errors.AppendLine("Пароль должен содеражать: минимум 6 символов: обязательно: цифры + заглавные + строчные буквы латиницы. Максимум символов: 50");
             }
             if (errors.Length > 0)
             {
@@ -122,13 +128,25 @@ namespace UchetProsmotrennichFilmov.Pages
         private static bool IsPasswordAllowed(string text)
         {
             bool blnValidPassword = false;
-            Regex regPassword = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$");
+            Regex regPassword = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,50}$");
             if (text.Length > 0)
             {
                 blnValidPassword = regPassword.IsMatch(text);
             }
 
             return blnValidPassword;
+        }
+
+        private static bool IsLoginAllowed(string text)
+        {
+            bool blnValidLogin = false;
+            Regex regPassword = new Regex(@"^\w*([А-яА-яA-Za-z0-9]){4,50}$");
+            if (text.Length > 0)
+            {
+                blnValidLogin = regPassword.IsMatch(text);
+            }
+
+            return blnValidLogin;
         }
 
     }

@@ -18,6 +18,7 @@ namespace UchetProsmotrennichFilmov.Pages
         private Films row = new Films();
         private byte[] data = null;
         Regex regex = new Regex(@"^[0-9]+$");
+        Regex namefl = new Regex(@"^\w*([А-яА-яA-Za-z0-9 \.,?!]){1,300}$");
         MatchCollection match;
 
         public AddEddFilm(Films films)
@@ -57,6 +58,8 @@ namespace UchetProsmotrennichFilmov.Pages
             StringBuilder errors = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(row.NameFilm)) errors.AppendLine("Введите Название фильма");
+            match = namefl.Matches(TxtName4.Text);
+            if (match.Count == 0) errors.AppendLine("Название может содержать: только буквы латиницы, кирилицы, цифры, точки, запятые, нижнее подчеркивание, пробел, вопрос, восклицание");
             if (string.IsNullOrWhiteSpace(row.Opisanie)) errors.AppendLine("Введите описание фильма");
             if (row.GodFilma == null) errors.AppendLine("Введите год фильма");
             match = regex.Matches(TxtName1.Text);
