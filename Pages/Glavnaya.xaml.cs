@@ -30,6 +30,11 @@ namespace UchetProsmotrennichFilmov.Pages
             CBactor.ItemsSource = BD.AppDB.db.Actors.ToList();
             CBRezhis.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
             KatalogGrid.ItemsSource = BD.AppDB.db.Films.ToList();
+            if (AppDB.CurrentUser == null || AppDB.CurrentUser.RolId == 2)
+            {
+                BtnAddFilm.Visibility = Visibility.Collapsed;
+                BtnDel.Visibility = Visibility.Collapsed;
+            }
         }
 
 
@@ -82,12 +87,12 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void BtnReload_Click(object sender, RoutedEventArgs e)
         {
-            sortBox.SelectedIndex = -1;
+            //sortBox.SelectedIndex = -1;
 
             
-            CBTip.SelectedIndex = -1;
+            //CBTip.SelectedIndex = -1;
+            UpdFilm();
 
-           
 
         }
 
@@ -117,12 +122,12 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void sortBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Seach_Filter_Films(SeactWater.Text, sortBox.Text, CBTip.Text);
         }
 
         private void CBTip_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Seach_Filter_Films(SeactWater.Text, sortBox.Text, CBTip.SelectedValue.ToString());
         }
 
         private void CBJanr_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -164,55 +169,62 @@ namespace UchetProsmotrennichFilmov.Pages
         private void SeactWater_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+
+            Seach_Filter_Films(SeactWater.Text, sortBox.Text, CBTip.Text);
         }
 
 
 
 
-        //private void Seach_Filter_Films(string search = "", string sort = "По имени, от А до Я", string filter = "Все породы")
-        //{
+        private void Seach_Filter_Films(string search = "", string sort = "", string filter = "")
+        {
 
-        //   // var materialList = DB.AppData.db.kotiki.ToList();
-        //    var filmpoisk = AppDB.db.Films.ToList();
-        //    switch (sort)
-        //    {
-        //        //наименование, остаток на складе и стоимость 
+           
+            var filmpoisk = AppDB.db.Films.ToList();
+            
+            switch (sort)
+            {
+                // сортировака имя, рейтинг, год
 
-        //        case "По имени, от А до Я":
-        //            materialList = materialList.OrderByDescending(s => s.name).ToList();
-        //            break;
-        //        case "По имени, от Я до А":
-        //            materialList = materialList.OrderBy(s => s.name).ToList();
+                case "По имени, от А до Я":
+                    filmpoisk = filmpoisk.OrderByDescending(s => s.NameFilm).ToList();
+                    break;
+                case "По имени, от Я до А":
+                    filmpoisk = filmpoisk.OrderBy(s => s.NameFilm).ToList();
 
-        //            break;
-        //        case "Вначале моложе":
-        //            materialList = materialList.OrderBy(s => s.dr).ToList();
-        //            break;
-        //        case "Вначале старее":
-        //            materialList = materialList.OrderByDescending(s => s.dr).ToList();
-        //            break;
-        //        case "По убыванию цены":
-        //            materialList = materialList.OrderBy(s => s.price).ToList();
-        //            break;
-        //        case "По возрастанию цены":
-        //            materialList = materialList.OrderByDescending(s => s.price).ToList();
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    if (!string.IsNullOrEmpty(search) || !string.IsNullOrWhiteSpace(search))
-        //    {
-        //        //по наименованию и описанию материала 
+                    break;
+                case "По рейтингу, вначале высокий":
+                    filmpoisk = filmpoisk.OrderBy(s => s.Ocenka).ToList();
+                    break;
+                case "По рейтингу, вначале низкий":
+                    filmpoisk = filmpoisk.OrderByDescending(s => s.Ocenka).ToList();
+                    break;
+                case "По году, вначале старее":
+                    filmpoisk = filmpoisk.OrderByDescending(s => s.GodFilma).ToList();
+                    break;
+                case "По году, вначале новее":
+                    filmpoisk = filmpoisk.OrderBy(s => s.GodFilma).ToList();
+                    break;
+                default:
+                    break;
+            }
+            if (!string.IsNullOrEmpty(search) || !string.IsNullOrWhiteSpace(search))
+            {
+                //по наименованию и описанию 
 
-        //        materialList = materialList.Where(s => s.name.ToLower().Contains(search.ToLower())
-        //        || (s.poroda ?? "").ToLower().Contains(search.ToLower())).ToList();
-        //    }
-        //    if (filter != "Все породы")
-        //    {
-        //        materialList = materialList.Where(s => s.poroda.ToLower().Contains(filter.ToLower())).ToList();
-        //    }
-        //    materialsGrid.ItemsSource = materialList;
-        //}
+                filmpoisk = filmpoisk.Where(s => s.NameFilm.ToLower().Contains(search.ToLower())
+                || (s.Opisanie ?? "").ToLower().Contains(search.ToLower())).ToList();
+            }
+            if (filter != "")
+            {
+
+                filmpoisk = filmpoisk.Where(s => s.IdTip.ToString().Contains(filter.ToLower())).ToList();
+            }
+
+
+            KatalogGrid.ItemsSource = null;
+            KatalogGrid.ItemsSource = filmpoisk;
+        }
     }
 }
 

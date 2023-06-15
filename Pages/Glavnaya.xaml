@@ -88,6 +88,7 @@
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
                                                 <Image  
                                     Source="{Binding ImageFilm}" 
@@ -138,13 +139,21 @@
                                     Orientation="Horizontal" 
                                     Grid.Row="5" 
                                     Grid.Column="1">
+                                                    <TextBlock Text="Тип: "/>
+                                                    <TextBlock Text="{Binding Tip.NameTip}" FontWeight="Bold"/>
+
+                                                </StackPanel>
+                                                <StackPanel 
+                                    Orientation="Horizontal" 
+                                    Grid.Row="6" 
+                                    Grid.Column="1">
                                                     <TextBlock Text="Рейтинг: "/>
                                                     <TextBlock Text="{Binding Ocenka}" FontWeight="Bold"/>
 
                                                 </StackPanel>
                                                 <StackPanel 
                                     Orientation="Horizontal" 
-                                    Grid.Row="6" 
+                                    Grid.Row="7" 
                                     Grid.Column="1">
                                                     <TextBlock Text="Отметить как: " FontWeight="Bold"/>
                                                     <Label Width="30" />

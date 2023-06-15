@@ -97,7 +97,7 @@ namespace UchetProsmotrennichFilmov.Pages
                     GodFilma = Convert.ToInt32(TxtName1.Text),
                     Opisanie = TxtName3.Text,
                     Ocenka = Convert.ToInt32(TxtName4.Text),
-                    IdUser = 2
+                    IdUser = 1
      
 
 
