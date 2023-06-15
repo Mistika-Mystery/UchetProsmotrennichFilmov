@@ -90,11 +90,24 @@
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
-                                                <Image  
+                                                <!--<Image  
                                     Source="{Binding ImageFilm}" 
                                     Grid.Column="0" 
                                     Grid.Row="0" 
-                                    Grid.RowSpan="6" MaxWidth="150" MaxHeight="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    Grid.RowSpan="6" MaxWidth="150" MaxHeight="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
+
+                                                <Image
+                                                    Grid.Column="0" 
+                                    Grid.Row="0" 
+                                    Grid.RowSpan="6" MaxWidth="150" MaxHeight="150">
+                                                    <Image.Source>
+                                                        <Binding Path="ImageFilm">
+                                                            <Binding.TargetNullValue>
+                                                                <ImageSource>netu.png</ImageSource>
+                                                            </Binding.TargetNullValue>
+                                                        </Binding>
+                                                    </Image.Source>
+                                                </Image>
                                                 <StackPanel 
                                     Orientation="Horizontal" 
                                     Grid.Row="0" 
