@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using UchetProsmotrennichFilmov.BD;
 
+
 namespace UchetProsmotrennichFilmov.Pages
 {
     /// <summary>
@@ -24,17 +25,29 @@ namespace UchetProsmotrennichFilmov.Pages
         public Glavnaya()
         {
             InitializeComponent();
-            CBTip.ItemsSource = BD.AppDB.db.Tip.ToList();
+            var AllTip = AppDB.db.Tip.ToList();
+            AllTip.Insert(0, new Tip
+            {
+                NameTip = "Все типы"
+            });
+            CBTip.ItemsSource = AllTip;
+            CBTip.SelectedIndex= 0;
+
             CBJanr.ItemsSource = BD.AppDB.db.Janr.ToList();
             CBStrana.ItemsSource = BD.AppDB.db.Strany.ToList();
             CBactor.ItemsSource = BD.AppDB.db.Actors.ToList();
             CBRezhis.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
-            KatalogGrid.ItemsSource = BD.AppDB.db.Films.ToList();
+
+            var currentFilms = BD.AppDB.db.Films.ToList();
+            KatalogGrid.ItemsSource = currentFilms;
+
             if (AppDB.CurrentUser == null || AppDB.CurrentUser.RolId == 2)
             {
                 BtnAddFilm.Visibility = Visibility.Collapsed;
                 BtnDel.Visibility = Visibility.Collapsed;
             }
+            Seach_Filter_Films(SeactWater.Text);
+
         }
 
 
@@ -87,10 +100,7 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void BtnReload_Click(object sender, RoutedEventArgs e)
         {
-            //sortBox.SelectedIndex = -1;
-
             
-            //CBTip.SelectedIndex = -1;
             UpdFilm();
 
 
@@ -122,12 +132,12 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void sortBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Seach_Filter_Films(SeactWater.Text, sortBox.Text, CBTip.Text);
+            Seach_Filter_Films(SeactWater.Text);
         }
 
         private void CBTip_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Seach_Filter_Films(SeactWater.Text, sortBox.Text, CBTip.SelectedValue.ToString());
+            Seach_Filter_Films(SeactWater.Text);
         }
 
         private void CBJanr_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -170,40 +180,41 @@ namespace UchetProsmotrennichFilmov.Pages
         {
 
 
-            Seach_Filter_Films(SeactWater.Text, sortBox.Text, CBTip.Text);
+            Seach_Filter_Films(SeactWater.Text);
         }
 
 
 
 
-        private void Seach_Filter_Films(string search = "", string sort = "", string filter = "")
+        private void Seach_Filter_Films(string search = "")
         {
 
            
             var filmpoisk = AppDB.db.Films.ToList();
             
-            switch (sort)
+
+            switch (sortBox.SelectedIndex)
             {
                 // сортировака имя, рейтинг, год
 
-                case "По имени, от А до Я":
-                    filmpoisk = filmpoisk.OrderByDescending(s => s.NameFilm).ToList();
-                    break;
-                case "По имени, от Я до А":
+                case 1:
                     filmpoisk = filmpoisk.OrderBy(s => s.NameFilm).ToList();
+                    break;
+                case 2:
+                    filmpoisk = filmpoisk.OrderByDescending(s => s.NameFilm).ToList();
 
                     break;
-                case "По рейтингу, вначале высокий":
-                    filmpoisk = filmpoisk.OrderBy(s => s.Ocenka).ToList();
-                    break;
-                case "По рейтингу, вначале низкий":
+                case 3:
                     filmpoisk = filmpoisk.OrderByDescending(s => s.Ocenka).ToList();
                     break;
-                case "По году, вначале старее":
-                    filmpoisk = filmpoisk.OrderByDescending(s => s.GodFilma).ToList();
+                case 4:
+                    filmpoisk = filmpoisk.OrderBy(s => s.Ocenka).ToList();
                     break;
-                case "По году, вначале новее":
+                case 5:
                     filmpoisk = filmpoisk.OrderBy(s => s.GodFilma).ToList();
+                    break;
+                case 6:
+                    filmpoisk = filmpoisk.OrderByDescending(s => s.GodFilma).ToList();
                     break;
                 default:
                     break;
@@ -215,14 +226,14 @@ namespace UchetProsmotrennichFilmov.Pages
                 filmpoisk = filmpoisk.Where(s => s.NameFilm.ToLower().Contains(search.ToLower())
                 || (s.Opisanie ?? "").ToLower().Contains(search.ToLower())).ToList();
             }
-            if (filter != "")
-            {
+            //if (CBTip.SelectedIndex != 0)
+            //{
+            //    filmpoisk = filmpoisk.Where(s => s.Tip == CBTip.SelectedValue).ToList();
+            //}
 
-                filmpoisk = filmpoisk.Where(s => s.IdTip.ToString().Contains(filter.ToLower())).ToList();
-            }
 
 
-            KatalogGrid.ItemsSource = null;
+
             KatalogGrid.ItemsSource = filmpoisk;
         }
     }

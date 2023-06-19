@@ -90,11 +90,7 @@
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
-                                                <!--<Image  
-                                    Source="{Binding ImageFilm}" 
-                                    Grid.Column="0" 
-                                    Grid.Row="0" 
-                                    Grid.RowSpan="6" MaxWidth="150" MaxHeight="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
+                           
 
                                                 <Image
                                                     Grid.Column="0" 
@@ -212,7 +208,8 @@
                                         <GradientStop Color="#FF978C86" Offset="0.007"/>
                                     </LinearGradientBrush>
                                 </TextBlock.Background></TextBlock>
-                            <ComboBox x:Name="sortBox" Cursor="Hand" SelectionChanged="sortBox_SelectionChanged" >
+                            <ComboBox x:Name="sortBox" Cursor="Hand" SelectionChanged="sortBox_SelectionChanged" SelectedIndex="0" >
+                                <ComboBoxItem Content="Без сортировки"/>
                                 <ComboBoxItem Content="По имени, от А до Я"/>
                                 <ComboBoxItem Content="По имени, от Я до А"/>
                                 <ComboBoxItem Content="По рейтингу, вначале высокий"/>
@@ -229,7 +226,7 @@
                                         <GradientStop Color="#FF978C86" Offset="0.007"/>
                                     </LinearGradientBrush>
                                 </TextBlock.Background></TextBlock>
-                            <ComboBox x:Name="CBTip" SelectedItem="{Binding Tip}" DisplayMemberPath="NameTip" Cursor="Hand" SelectionChanged="CBTip_SelectionChanged"/>
+                            <ComboBox x:Name="CBTip" DisplayMemberPath="NameTip" Cursor="Hand" SelectionChanged="CBTip_SelectionChanged"/>
                             <Label Height="5"/>
 
                             <TextBlock Text="Фильтр по жанру" FontWeight="Bold">

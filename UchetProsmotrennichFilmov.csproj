@@ -209,7 +209,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Resource Include="Pages\netu.png" />
-    <Resource Include="Image\netu.png" />
     <Resource Include="Image\pravo.png" />
     <Resource Include="Image\levo1.png" />
     <Resource Include="Image\act.png" />
