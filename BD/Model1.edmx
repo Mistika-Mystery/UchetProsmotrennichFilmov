@@ -589,7 +589,6 @@
         </Association>
         <Association Name="FK_Films_Rezhisers">
           <End Role="Rezhisers" Type="Self.Rezhisers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
           </End>
           <End Role="Films" Type="Self.Films" Multiplicity="*" />
           <ReferentialConstraint>
@@ -615,7 +614,6 @@
         </Association>
         <Association Name="FK_Films_Tip">
           <End Role="Tip" Type="Self.Tip" Multiplicity="1">
-            <OnDelete Action="Cascade" />
           </End>
           <End Role="Films" Type="Self.Films" Multiplicity="*" />
           <ReferentialConstraint>
@@ -641,7 +639,6 @@
         </Association>
         <Association Name="FK_UserFilm_Films">
           <End Role="Films" Type="Self.Films" Multiplicity="1">
-            <OnDelete Action="Cascade" />
           </End>
           <End Role="Prosmotreno" Type="Self.Prosmotreno" Multiplicity="*" />
           <ReferentialConstraint>
@@ -655,7 +652,6 @@
         </Association>
         <Association Name="FK_UserFilm_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
           </End>
           <End Role="Prosmotreno" Type="Self.Prosmotreno" Multiplicity="*" />
           <ReferentialConstraint>
@@ -681,7 +677,6 @@
         </Association>
         <Association Name="FK_Users_Rol">
           <End Role="Rol" Type="Self.Rol" Multiplicity="1">
-            <OnDelete Action="Cascade" />
           </End>
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>

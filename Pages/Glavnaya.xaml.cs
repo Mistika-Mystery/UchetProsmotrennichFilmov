@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+﻿using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,31 +23,32 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class Glavnaya : Window
     {
+        //List<BD.Films> currentFilms = new List<BD.Films>();
         public Glavnaya()
         {
             InitializeComponent();
+
+            
             var AllTip = AppDB.db.Tip.ToList();
             AllTip.Insert(0, new Tip
             {
                 NameTip = "Все типы"
             });
             CBTip.ItemsSource = AllTip;
-            CBTip.SelectedIndex= 0;
+           
 
             CBJanr.ItemsSource = BD.AppDB.db.Janr.ToList();
             CBStrana.ItemsSource = BD.AppDB.db.Strany.ToList();
             CBactor.ItemsSource = BD.AppDB.db.Actors.ToList();
             CBRezhis.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
 
-            var currentFilms = BD.AppDB.db.Films.ToList();
-            KatalogGrid.ItemsSource = currentFilms;
-
+           
             if (AppDB.CurrentUser == null || AppDB.CurrentUser.RolId == 2)
             {
                 BtnAddFilm.Visibility = Visibility.Collapsed;
                 BtnDel.Visibility = Visibility.Collapsed;
             }
-            Seach_Filter_Films(SeactWater.Text);
+            
 
         }
 
@@ -114,8 +116,14 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void UpdFilm()
         {
+            SeactWater.Visibility= Visibility.Collapsed;
+            SeactWater.Text = "";
+            TBoxSearch.Visibility = Visibility.Visible;
+            sortBox.SelectedIndex= 0;
+            CBTip.SelectedIndex= 0;
             var Upfilm = AppDB.db.Films.ToList();
             KatalogGrid.ItemsSource = Upfilm;
+
         }
 
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
@@ -191,7 +199,8 @@ namespace UchetProsmotrennichFilmov.Pages
 
            
             var filmpoisk = AppDB.db.Films.ToList();
-            
+          
+
 
             switch (sortBox.SelectedIndex)
             {
@@ -226,6 +235,7 @@ namespace UchetProsmotrennichFilmov.Pages
                 filmpoisk = filmpoisk.Where(s => s.NameFilm.ToLower().Contains(search.ToLower())
                 || (s.Opisanie ?? "").ToLower().Contains(search.ToLower())).ToList();
             }
+          
             //if (CBTip.SelectedIndex != 0)
             //{
             //    filmpoisk = filmpoisk.Where(s => s.Tip == CBTip.SelectedValue).ToList();

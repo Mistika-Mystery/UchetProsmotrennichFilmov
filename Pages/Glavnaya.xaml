@@ -226,7 +226,7 @@
                                         <GradientStop Color="#FF978C86" Offset="0.007"/>
                                     </LinearGradientBrush>
                                 </TextBlock.Background></TextBlock>
-                            <ComboBox x:Name="CBTip" DisplayMemberPath="NameTip" Cursor="Hand" SelectionChanged="CBTip_SelectionChanged"/>
+                            <ComboBox x:Name="CBTip" DisplayMemberPath="NameTip" Cursor="Hand" SelectionChanged="CBTip_SelectionChanged" SelectedIndex="0"/>
                             <Label Height="5"/>
 
                             <TextBlock Text="Фильтр по жанру" FontWeight="Bold">
