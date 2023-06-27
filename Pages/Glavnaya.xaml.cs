@@ -85,7 +85,10 @@ namespace UchetProsmotrennichFilmov.Pages
                 //BtnDelRezh.Visibility = Visibility.Collapsed;
             }
 
-            
+            List<> currentTasks = new List<TaskNames>();
+            foreach (var item in AppData.db.CompletedTaskUser.ToList().Where(c => c.UserID == AppData.CurrentUser.ID).ToList())
+                currentTasks.Add(AppData.db.TaskNames.ToList().Where(c => c.ID == item.CompletedTaskID && item.UserID == AppData.CurrentUser.ID).First());
+            LBMyTasks.ItemsSource = currentTasks;
         }
 
 

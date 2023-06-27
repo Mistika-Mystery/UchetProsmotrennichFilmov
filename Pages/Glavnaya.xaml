@@ -348,7 +348,22 @@
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <Label/>
+                    
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <TextBlock HorizontalAlignment="Center" Text="Мои задания" Name="LBoxHeader" FontSize="16pt"></TextBlock>
+                        <ListBox Width="600" d:ItemsSource="{d:SampleData ItemCount=5}" Name="LBMyTasks" BorderThickness="3px" >
+                            <ListBox.ItemTemplate>
+
+                                <DataTemplate>
+                                    <Grid HorizontalAlignment="Center">
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding NameFilm}" FontSize="14pt"></TextBlock>
+                                        <TextBlock Text=""> </TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
                 </TabItem.Content>
             </TabItem>
             <TabItem>
