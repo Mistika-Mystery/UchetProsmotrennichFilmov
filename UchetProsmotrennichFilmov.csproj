@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddRezhWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Avtorizac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +150,9 @@
   <ItemGroup>
     <Compile Include="Pages\AddEddFilm.xaml.cs">
       <DependentUpon>AddEddFilm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddRezhWindow.xaml.cs">
+      <DependentUpon>AddRezhWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Avtorizac.xaml.cs">
       <DependentUpon>Avtorizac.xaml</DependentUpon>

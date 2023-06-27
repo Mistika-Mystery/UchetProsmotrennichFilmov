@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,10 @@ namespace UchetProsmotrennichFilmov.Pages
     /// </summary>
     public partial class Glavnaya : Window
     {
-        //List<BD.Films> currentFilms = new List<BD.Films>();
+        private int PagesCount;
+        private int NumberOfPage = 0;
+        private int maxItemShow = 5;
+        List<Films> currentTasks = AppDB.db.Films.ToList();
         public Glavnaya()
         {
             InitializeComponent();
@@ -35,21 +39,53 @@ namespace UchetProsmotrennichFilmov.Pages
                 NameTip = "Все типы"
             });
             CBTip.ItemsSource = AllTip;
-           
 
-            CBJanr.ItemsSource = BD.AppDB.db.Janr.ToList();
-            CBStrana.ItemsSource = BD.AppDB.db.Strany.ToList();
-            CBactor.ItemsSource = BD.AppDB.db.Actors.ToList();
-            CBRezhis.ItemsSource = BD.AppDB.db.Rezhisers.ToList();
+            var AllJanr = AppDB.db.Janr.ToList();
+            AllJanr.Insert(0, new Janr
+            {
+                NameJanr = "Все жанры"
+            });
+            CBJanr.ItemsSource = AllJanr;
 
-           
+            var AllStrana= AppDB.db.Strany.ToList();
+            AllStrana.Insert(0, new Strany
+            {
+                NameStrana = "Все страны"
+            });
+            CBStrana.ItemsSource = AllStrana;
+
+            var AllActor = AppDB.db.Actors.ToList();
+            AllActor.Insert(0, new Actors
+            {
+                FIO = "Все актёры"
+            });
+            CBactor.ItemsSource = AllActor;
+
+            var AllRezh = AppDB.db.Rezhisers.ToList();
+            AllRezh.Insert(0, new Rezhisers
+            {
+                FIO = "Все режиссёры"
+            });
+            CBRezhis.ItemsSource = AllRezh;
+
+
+            //RezhGrid.ItemsSource = AppDB.db.Rezhisers.ToList();
+
+            PagesCount = Convert.ToInt16(Math.Floor(((double)currentTasks.Count / maxItemShow) - 0.0000001));
+            CheckPages();
+            KatalogGrid.ItemsSource = currentTasks.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
+
             if (AppDB.CurrentUser == null || AppDB.CurrentUser.RolId == 2)
             {
                 BtnAddFilm.Visibility = Visibility.Collapsed;
                 BtnDel.Visibility = Visibility.Collapsed;
-            }
-            
 
+
+                //BtnAddRezh.Visibility = Visibility.Collapsed;
+                //BtnDelRezh.Visibility = Visibility.Collapsed;
+            }
+
+            
         }
 
 
@@ -121,9 +157,61 @@ namespace UchetProsmotrennichFilmov.Pages
             TBoxSearch.Visibility = Visibility.Visible;
             sortBox.SelectedIndex= 0;
             CBTip.SelectedIndex= 0;
-            var Upfilm = AppDB.db.Films.ToList();
-            KatalogGrid.ItemsSource = Upfilm;
+            CBJanr.SelectedIndex= 0;
+            CBStrana.SelectedIndex= 0;
+            CBactor.SelectedIndex= 0;
+            var currentTasks = AppDB.db.Films.ToList();
+       
 
+            PagesCount = Convert.ToInt16(Math.Floor(((double)currentTasks.Count / maxItemShow) - 0.0000001));
+            CheckPages();
+            KatalogGrid.ItemsSource = currentTasks.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
+
+            //var upRezh = AppDB.db.Rezhisers.ToList();
+            //RezhGrid.ItemsSource = upRezh;
+
+        }
+        private void CheckPages()
+        {
+            if(NumberOfPage == 0)
+            {
+                TBNextPage.Visibility = Visibility.Collapsed;
+                vperimg.Visibility = Visibility.Collapsed;
+                TBPrevPage.Visibility = Visibility.Collapsed;
+                backim.Visibility = Visibility.Collapsed;
+
+
+
+            }
+
+             else if (NumberOfPage > 0)
+            {
+                TBPrevPage.Text = (NumberOfPage).ToString();
+                TBPrevPage.Visibility = Visibility.Visible;
+                backim.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TBPrevPage.Visibility = Visibility.Collapsed;
+                backim.Visibility = Visibility.Collapsed;
+
+
+            }
+            if (NumberOfPage < PagesCount)
+            {
+                TBNextPage.Text = (NumberOfPage + 2).ToString();
+                TBNextPage.Visibility = Visibility.Visible;
+                vperimg.Visibility = Visibility.Visible;
+               
+            }
+            else
+            {
+                TBNextPage.Visibility = Visibility.Collapsed;
+              vperimg.Visibility = Visibility.Collapsed;
+
+
+            }
+            
         }
 
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
@@ -150,22 +238,22 @@ namespace UchetProsmotrennichFilmov.Pages
 
         private void CBJanr_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Seach_Filter_Films(SeactWater.Text);
         }
 
         private void CBStrana_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Seach_Filter_Films(SeactWater.Text);
         }
 
         private void CBactor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Seach_Filter_Films(SeactWater.Text);
         }
 
         private void CBRezhis_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Seach_Filter_Films(SeactWater.Text);
         }
 
         private void TBoxSearch_GotFocus(object sender, RoutedEventArgs e)
@@ -235,17 +323,87 @@ namespace UchetProsmotrennichFilmov.Pages
                 filmpoisk = filmpoisk.Where(s => s.NameFilm.ToLower().Contains(search.ToLower())
                 || (s.Opisanie ?? "").ToLower().Contains(search.ToLower())).ToList();
             }
-          
-            //if (CBTip.SelectedIndex != 0)
-            //{
-            //    filmpoisk = filmpoisk.Where(s => s.Tip == CBTip.SelectedValue).ToList();
-            //}
 
+            // комбобоксы
+            if (CBTip == null)
+            {
+                return;
+            }
+            if (CBTip.SelectedIndex != 0)
+            {
+                filmpoisk = filmpoisk.Where(s => s.Tip == CBTip.SelectedValue).ToList();
+            }
+           
+            if (CBJanr.SelectedIndex > 0)
+            {
+                filmpoisk = filmpoisk.Where(s => s.Janr.Contains(CBJanr.SelectedItem as Janr)).ToList();
+            }
 
+            if (CBStrana.SelectedIndex != 0)
+            {
+                filmpoisk = filmpoisk.Where(p => p.Strany == CBStrana.SelectedValue).ToList();
+            }
 
+            if (CBactor.SelectedIndex > 0)
+            {
+                filmpoisk = filmpoisk.Where(s => s.Actors.Contains(CBactor.SelectedItem as Actors)).ToList();
+            }
+
+            if (CBRezhis.SelectedIndex != 0)
+            {
+                filmpoisk = filmpoisk.Where(p => p.Rezhisers == CBRezhis.SelectedValue).ToList();
+            }
 
             KatalogGrid.ItemsSource = filmpoisk;
+            PagesCount = Convert.ToInt16(Math.Floor(((double)filmpoisk.Count / maxItemShow) - 0.0000001));
+            CheckPages();
+            KatalogGrid.ItemsSource = filmpoisk.Skip(maxItemShow * NumberOfPage).Take(maxItemShow).ToList();
         }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Seach_Filter_Films(SeactWater.Text);
+            if (NumberOfPage < PagesCount)
+            {
+               
+                NumberOfPage++;
+                TBCurrentPage.Text = (NumberOfPage + 1).ToString();
+                CheckPages();
+                
+                
+            }
+        }
+
+        private void backim_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Seach_Filter_Films(SeactWater.Text);
+            if (NumberOfPage > 0)
+            {
+                
+                NumberOfPage--;
+                TBCurrentPage.Text = (NumberOfPage + 1).ToString();
+                CheckPages();
+                
+                
+            }
+        }
+
+        //private void BtnAddRezh_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
+
+        //private void BtnDelRezh_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //}
+
+        //private void RezhGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        //{
+        //    var row = (sender as DataGridRow).DataContext as Rezhisers;
+        //    AddRezhWindow addRezhWindow = new AddRezhWindow(row);
+        //    addRezhWindow.Show();
+        //}
     }
 }
 
